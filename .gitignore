@@ -1,5 +1,17 @@
 # .gitignore
 
+# Dependencies
+node_modules/
+web/.next/
+web/out/
+.next/
+out/
+
+# Env
+.env
+.env.local
+.env*.local
+
 # OS
 .DS_Store
 Thumbs.db

@@ -13,7 +13,14 @@ Licenciatura-en-yo-mismo/
 ├── README.md                 ← Este archivo
 ├── plan_general.json         ← Plan curricular completo (42 módulos)
 ├── config/
-│   └── reglas_progresion.md  ← Reglas de avance, evaluación y reprobación
+│   ├── modelo_estudio.md          ← Ritmo libre, gates, horas opcionales
+│   ├── arquitectura.md            ← GitHub + Vercel + Supabase, horas pasivas
+│   ├── reglas_progresion.md       ← Reglas generales de avance
+│   ├── protocolo_evaluacion.md    ← Rúbricas L1/L2/L3, procedimiento completo
+│   ├── agente_evaluador.md        ← Instrucciones del Agente Evaluador
+│   ├── flujo_trabajo.md           ← Rutina diaria/semanal
+│   └── rubricas/
+│       └── resumen_escalas.md     ← Tablas rápidas de puntuación
 ├── diagnostico/
 │   ├── perfil_entrada.md     ← Línea de base (Bloque 1 del counselor)
 │   └── clusters.md           ← 13 familias de estudio
@@ -43,6 +50,18 @@ Licenciatura-en-yo-mismo/
 - **Horas:** registrar tiempo real de estudio intensivo (no incluye lectura L1 complementaria salvo que se indique).
 - **Formato:** Markdown para humanos, JSON para datos estructurados. Texto plano = longevidad a 10 años.
 - **Versionado:** se recomienda init git en esta carpeta para historial del expediente.
+
+## Webapp (Fase 1)
+
+Portal de lectura: dashboard, plan completo, detalle de módulos.
+
+```powershell
+cd C:\Users\Marcos\Licenciatura-en-yo-mismo
+npm run sync    # copia plan + progreso + M01 a web/
+npm run dev     # http://localhost:3000
+```
+
+Deploy: ver `DEPLOY.md` (GitHub + Vercel, root directory = `web`).
 
 ## Próximo paso operativo
 

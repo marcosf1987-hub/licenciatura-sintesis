@@ -11,7 +11,8 @@
 | Métrica | Valor |
 |---|---|
 | Módulos aprobados | 0 / 42 |
-| Horas acumuladas | 0 / 2.520 |
+| Horas en plataforma (opcional, solo stats) | 0 |
+| Referencia orientativa del plan | ~2.520 h (~60 h/módulo) |
 | Módulo actual | — |
 | Promedio general | — |
 | Año académico | 1 |
@@ -27,7 +28,7 @@
 |---|---|
 | Track | F — Filosofía · Lenguaje · Lógica |
 | Nivel | L2→L3 |
-| Horas | 0 / 60 |
+| Horas plataforma | 0/— (no requisito) |
 | Semana | — / 8 |
 | Prerrequisitos | Ninguno |
 
@@ -37,12 +38,12 @@
 
 | Módulo | Nombre | Track | Estado | Horas | Nota |
 |---|---|---|---|---|---|
-| M01 | Lógica Proposicional y de Predicados | F | `disponible` | 0/60 | |
-| M02 | Química General y Física de Materiales | T | `bloqueado` | 0/60 | tras M01 |
-| M03 | Teoría Sociológica Clásica | S | `bloqueado` | 0/60 | tras M02 |
-| M04 | Cibernética y Teoría de Sistemas | X | `bloqueado` | 0/60 | tras M03 |
-| M05 | Mineralogía y Cristalografía | T | `bloqueado` | 0/60 | requiere M02 |
-| M06 | STS | S | `bloqueado` | 0/60 | requiere M03 |
+| M01 | Lógica Proposicional y de Predicados | F | `disponible` | — |
+| M02 | Química General y Física de Materiales | T | `bloqueado` | — |
+| M03 | Teoría Sociológica Clásica | S | `bloqueado` | — |
+| M04 | Cibernética y Teoría de Sistemas | X | `bloqueado` | — |
+| M05 | Mineralogía y Cristalografía | T | `bloqueado` | — |
+| M06 | STS | S | `bloqueado` | — |
 
 ---
 

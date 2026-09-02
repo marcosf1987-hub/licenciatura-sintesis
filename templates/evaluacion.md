@@ -5,52 +5,70 @@
 | Campo | Valor |
 |---|---|
 | **Módulo** | {{MODULO_ID}} |
-| **Intento** | 1 de 3 |
-| **Fecha inicio** | YYYY-MM-DD |
-| **Fecha entrega** | YYYY-MM-DD |
-| **Nivel evaluado** | L2 / L3 |
-| **Tiempo registrado** | min |
+| **Nivel evaluado** | L1 / L2 / L3 / L2→L3 |
+| **Intento** | N de 3 |
+| **Instancia generada** | YYYY-MM-DD HH:MM |
+| **Protocolo** | `config/protocolo_evaluacion.md` §4.x |
 
 ---
 
-## Parte 1 — Examen conceptual (peso: %)
+## Verificación previa (Evaluador)
 
-### Instrucciones
+- [ ] Programa ≥ 90%
+- [ ] Bibliografía obligatoria
+- [ ] ≥ 1 artefacto en `artefactos/`
 
-- Sin consulta (salvo que se indique lo contrario)
-- Tiempo máximo: min
-- Responder en prosa; se valora precisión conceptual
+**No verificar:** horas, semanas, tiempo calendario.
+
+**Verificación:** OK / PENDIENTE — [detalle]
+
+---
+
+<!-- ============================================================ -->
+<!-- L2→L3 (ej. M01): Quiz 45% + Aplicación 35% + Síntesis 20%   -->
+<!-- L2: Quiz 40% + Aplicación 40% + Mapa/Ensayo 20%             -->
+<!-- L3: Conceptual 50% + Aplicación 30% + Ensayo 20%            -->
+<!-- ============================================================ -->
+
+## Parte A — {{TITULO_PARTE_A}} (peso: {{PESO_A}}%)
+
+| Campo | Valor |
+|---|---|
+| **Inicio** | YYYY-MM-DD HH:MM |
+| **Fin** | YYYY-MM-DD HH:MM |
+| **Tiempo máximo** | min |
+| **Consulta** | No / Sí (especificar) |
 
 ### Preguntas
 
 1. 
 2. 
 3. 
-4. 
-5. 
 
 ### Respuestas del estudiante
 
 1. 
 2. 
 3. 
-4. 
-5. 
 
-### Corrección (evaluador)
+### Corrección
 
-| Pregunta | Puntos | Máx | Observaciones |
+| Ítem | Pts | Máx | Observaciones |
 |---|---|---|---|
 | 1 | | | |
 | 2 | | | |
 | 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| **Subtotal** | | | |
+| **Subtotal A** | | **{{PESO_A}}** | **% del componente:** |
 
 ---
 
-## Parte 2 — Aplicación / caso / análisis (peso: %)
+## Parte B — {{TITULO_PARTE_B}} (peso: {{PESO_B}}%)
+
+| Campo | Valor |
+|---|---|
+| **Inicio** | YYYY-MM-DD HH:MM |
+| **Fin** | YYYY-MM-DD HH:MM |
+| **Modalidad** | Caso / Fuente / Problema aplicado |
 
 ### Consigna
 
@@ -60,18 +78,26 @@
 
 
 
-### Corrección (evaluador)
+### Corrección (rúbrica)
 
-| Criterio | Puntos | Máx |
+| Criterio | Pts | Máx |
 |---|---|---|
-| Comprensión del problema | | |
-| Uso correcto de conceptos | | |
-| Rigor argumentativo | | |
-| **Subtotal** | | |
+| Comprensión del enunciado | | 4 |
+| Uso de conceptos del módulo | | 4 |
+| Desarrollo / solución | | 4 |
+| Rigor | | 4 |
+| **Subtotal B** | | **% del componente:** |
 
 ---
 
-## Parte 3 — Síntesis / ensayo (peso: %)
+## Parte C — {{TITULO_PARTE_C}} (peso: {{PESO_C}}%)
+
+| Campo | Valor |
+|---|---|
+| **Plazo entrega** | YYYY-MM-DD HH:MM |
+| **Entregado** | YYYY-MM-DD HH:MM |
+| **Formato** | Ensayo / Mapa conceptual |
+| **Extensión** | palabras / nodos |
 
 ### Consigna
 
@@ -81,30 +107,35 @@
 
 
 
-### Corrección (evaluador)
+### Corrección
 
-| Criterio | Puntos | Máx |
+| Criterio | Pts | Máx |
 |---|---|---|
-| Tesis clara | | |
-| Estructura y coherencia | | |
-| Uso de bibliografía del módulo | | |
-| Originalidad analítica | | |
-| **Subtotal** | | |
+| Tesis / tema central | | |
+| Estructura / relaciones | | |
+| Bibliografía / precisión conceptual | | |
+| Argumentación / originalidad | | |
+| **Subtotal C** | | **% del componente:** |
 
 ---
 
 ## Resultado final
 
-| Componente | Peso | Nota ponderada |
-|---|---|---|
-| Parte 1 | % | |
-| Parte 2 | % | |
-| Parte 3 | % | |
-| **TOTAL** | 100% | |
+| Componente | Peso | % obtenido | Ponderado |
+|---|---|---|---|
+| Parte A | {{PESO_A}}% | | |
+| Parte B | {{PESO_B}}% | | |
+| Parte C | {{PESO_C}}% | | |
+| **TOTAL** | 100% | | |
 
-**Estado:** `pendiente` | `aprobado` | `reprobado`
+| Regla | Cumple |
+|---|---|
+| Total ≥ umbral (L2/L3: 70%, L1: 60%) | Sí / No |
+| Cada componente ≥ 50% (L2/L3) | Sí / No |
 
-**Umbral de aprobación:** 70% (ningún componente <50%)
+**Veredicto:** `pendiente` | `aprobado` | `reprobado`
+
+**Calificación verbal:** Sobresaliente / Muy bueno / Aprobado / Insuficiente / Deficiente
 
 ---
 
@@ -118,15 +149,25 @@
 
 - 
 
-### Recomendaciones (si reprobó)
+### Unidades a reforzar
 
-- Cambio de método:
-- Bibliografía adicional:
-- Plazo mínimo antes de reintento: días
+- 
 
 ---
 
-## Firma
+## Prescripción post-reprobación (solo si reprueba)
 
-- **Evaluador:** Agente Evaluador (IA)
+- Unidades débiles:
+- Bibliografía alternativa:
+- Ejercicios recomendados:
+- Enfoque distinto:
+- **Fecha earliest reintento:** YYYY-MM-DD
+
+---
+
+## Registro
+
+- **Evaluador:** Agente Evaluador
 - **Fecha corrección:** YYYY-MM-DD
+- **Archivo archivado:** `expediente/evaluaciones/{{MODULO_ID}}-intento-N-APROBADO.md`
+- **Desbloquea:** 

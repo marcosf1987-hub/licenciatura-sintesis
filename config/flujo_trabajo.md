@@ -8,17 +8,17 @@
 4. Actualizar `progreso.json`: `"estado": "en_curso"`, `"fecha_inicio"`.
 5. Actualizar `indice.md`: módulo activo.
 
-## Durante la cursada (cada semana)
+## Durante la cursada
 
-1. Copiar `templates/semana.md` → `semanas/SXX.md`.
-2. Registrar horas diarias al cierre de cada día.
-3. Al terminar la semana: sumar horas a `modulo.md` y `progreso.json`.
+1. Marcar temas del programa en `modulo.md` (o webapp) a medida que los cubrís.
+2. Guardar artefactos en `artefactos/` cuando quieras (≥1 antes de evaluar).
+3. *(Opcional)* Notas libres en `notas/` o `semanas/` — no obligatorio.
 
-## Al completar 60 horas
+## Al solicitar evaluación
 
-1. Verificar checklist de evidencias en `modulo.md`.
+1. Verificar checklist en `modulo.md`: programa ≥90%, bibliografía, ≥1 artefacto.
 2. Cambiar estado a `evaluacion` en `progreso.json`.
-3. Solicitar evaluación al Agente Evaluador.
+3. Solicitar evaluación al Agente Evaluador (`config/agente_evaluador.md`).
 
 ## Al rendir evaluación
 

@@ -35,6 +35,10 @@ bloqueado ──→ disponible ──→ en_curso ──→ evaluacion ──→
 
 ## 4. Evaluación por nivel
 
+> **Protocolo detallado:** `config/protocolo_evaluacion.md`  
+> **Instrucciones del agente:** `config/agente_evaluador.md`  
+> **Escalas rápidas:** `config/rubricas/resumen_escalas.md`
+
 ### L1 (lectura complementaria, sin módulo propio)
 - Quiz corto (10 preguntas) o ficha de lectura de 1 página.
 - Umbral: 60%. Sin bloqueo de avance.
@@ -60,18 +64,21 @@ bloqueado ──→ disponible ──→ en_curso ──→ evaluacion ──→
 | 3.er intento | Última instancia con evaluación reformulada |
 | Tras 3 reprobaciones | Revisión del plan con el director académico; no se baja el nivel |
 
-## 6. Registro de horas
+## 6. Registro de avance (sin horas obligatorias)
 
-- Registrar al cierre de cada semana en `semanas/SXX.md`.
-- Meta semanal: **7,5 h** (60 h / 8 semanas).
-- Si al llegar a la semana 8 no se completaron 60 h: extender el módulo (máx. 2 semanas extra) antes de evaluar.
+> Modelo completo: `config/modelo_estudio.md`
+
+- **No** se registran horas como requisito.
+- **No** se exigen checkpoints semanales ni mínimo de calendario.
+- El avance se mide por: **programa cubierto + bibliografía + artefacto(s) + evaluación aprobada**.
+- Registro opcional: notas en `artefactos/` o `notas/`; `semanas/` solo si te sirve.
+- En webapp: horas pasivas solo para **estadísticas** (`horas_plataforma`), nunca como gate.
 
 ## 7. Evidencias obligatorias por módulo aprobado
 
-- [ ] Programa cubierto (temario marcado)
-- [ ] Registro de horas (≥60 h)
-- [ ] Bibliografía obligatoria leída (lista en ficha del módulo)
-- [ ] Al menos 1 nota de estudio o mapa conceptual
+- [ ] Programa cubierto (temario ≥ 90%)
+- [ ] Bibliografía obligatoria leída
+- [ ] Al menos 1 artefacto de estudio (notas, mapa, ejercicios)
 - [ ] Evaluación rendida y corregida con rúbrica
 - [ ] Calificación final y fecha en `progreso.json`
 
