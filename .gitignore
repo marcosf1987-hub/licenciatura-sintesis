@@ -1,0 +1,17 @@
+# .gitignore
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*~
+
+# Temporales de evaluación en borrador
+**/evaluaciones/*-borrador.md
+**/*.tmp
+
+# No ignorar el expediente — todo lo demás se versiona

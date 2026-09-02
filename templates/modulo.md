@@ -1,0 +1,87 @@
+# {{MODULO_ID}} — {{NOMBRE}}
+
+## Metadatos
+
+| Campo | Valor |
+|---|---|
+| **ID** | {{MODULO_ID}} |
+| **Año** | {{ANIO}} |
+| **Track** | {{TRACK}} |
+| **Nivel** | {{NIVEL}} |
+| **Horas planificadas** | 60 |
+| **Horas registradas** | 0 |
+| **Estado** | `disponible` |
+| **Prerrequisitos** | {{PRERREQUISITOS}} |
+| **Desbloquea** | {{DESBLOQUEA}} |
+
+## Objetivos de aprendizaje
+
+Al aprobar este módulo deberías poder:
+
+1. 
+2. 
+3. 
+
+## Programa analítico
+
+- [ ] Tema 1
+- [ ] Tema 2
+- [ ] Tema 3
+- [ ] Tema 4
+- [ ] Tema 5
+- [ ] Tema 6
+- [ ] Tema 7
+- [ ] Tema 8
+
+## Bibliografía
+
+### Obligatoria
+
+| # | Obra | Autor | Capítulos / páginas |
+|---|---|---|---|
+| 1 | | | |
+
+### Complementaria
+
+| # | Obra | Autor | Notas |
+|---|---|---|---|
+| 1 | | | |
+
+## Cronograma (8 semanas)
+
+| Semana | Contenido | Horas | Hecho |
+|---|---|---|---|
+| S01 | | 7,5 | [ ] |
+| S02 | | 7,5 | [ ] |
+| S03 | | 7,5 | [ ] |
+| S04 | | 7,5 | [ ] |
+| S05 | | 7,5 | [ ] |
+| S06 | | 7,5 | [ ] |
+| S07 | | 7,5 | [ ] |
+| S08 | Repaso + evaluación | 7,5 | [ ] |
+
+## Evidencias
+
+- [ ] Registro semanal (`semanas/`)
+- [ ] Notas de estudio o mapa conceptual
+- [ ] Evaluación rendida (`evaluaciones/`)
+- [ ] Actualización de `progreso.json`
+
+## Evaluación
+
+| Componente | Peso | Nota | Mínimo |
+|---|---|---|---|
+| Examen conceptual | % | — | 50% |
+| Aplicación / caso | % | — | 50% |
+| Síntesis / ensayo | % | — | 50% |
+| **Total** | 100% | — | **70%** |
+
+## Notas del evaluador
+
+*(Completar tras corrección.)*
+
+## Conexiones
+
+- **Familias de estudio:** 
+- **Carreras de referencia:** 
+- **Módulos relacionados:** 
