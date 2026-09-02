@@ -43,7 +43,7 @@ Son **referencias de diseño**, no condiciones:
 | **~8 semanas sugeridas** | Ritmo cómodo a 1 h/día; podés ignorarlo |
 | **6 módulos/año** | Proyección si cursás ~1 módulo cada 2 meses; no es plazo fijo |
 
-El plan de 7 años es una **estimación**, no un contrato.
+El plan de 8 años es una **estimación orientativa**, no un contrato de plazos.
 
 ---
 

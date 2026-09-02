@@ -30,13 +30,6 @@ export interface ModuloProgreso {
   intentos_evaluacion: number;
 }
 
-export interface ModuloOpcional {
-  id: string;
-  nombre: string;
-  track: string;
-  prerrequisitos: string[];
-}
-
 export interface PlanGeneral {
   programa: {
     nombre: string;
@@ -52,7 +45,6 @@ export interface PlanGeneral {
   };
   tracks: Record<string, string>;
   modulos: ModuloPlan[];
-  modulos_opcionales_anio_8?: ModuloOpcional[];
 }
 
 export interface ProgresoExpediente {

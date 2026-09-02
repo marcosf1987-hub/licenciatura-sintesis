@@ -30,8 +30,7 @@ bloqueado ──→ disponible ──→ en_curso ──→ evaluacion ──→
 
 1. Un módulo L3 **requiere** todos sus prerrequisitos en estado `aprobado`.
 2. **Un solo módulo activo** a la vez (1 h/día no permite 2 módulos en paralelo).
-3. Los módulos se cursan **en orden numérico** dentro de cada año (M01 antes de M02, etc.).
-4. El Año 8 (M43–M48) es **opcional**; no bloquea cierre de la licenciatura.
+3. Los módulos se cursan **en orden numérico** (M01 → M48).
 
 ## 4. Evaluación por nivel
 
@@ -95,9 +94,9 @@ bloqueado ──→ disponible ──→ en_curso ──→ evaluacion ──→
 
 ## 10. Cierre de la licenciatura
 
-Requisitos mínimos para considerar **Licenciatura completada** (Años 1–7):
+Requisitos mínimos para considerar **Licenciatura completada** (Años 1–8):
 
-- 42 módulos en estado `aprobado`
-- Todos los módulos L3 del diagnóstico cubiertos por el plan
+- 48 módulos en estado `aprobado`
+- Todos los módulos del plan cubiertos
 - Expediente completo (evidencias de cada módulo)
-- Módulo integrador M42 aprobado
+- Módulo integrador M42 y cierre de Año 8 (M48) aprobados

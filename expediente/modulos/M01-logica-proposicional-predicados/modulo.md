@@ -39,20 +39,28 @@ Al aprobar este módulo deberías poder:
 
 ## Bibliografía
 
+> **Política de acceso:** `config/politica_bibliografia.md` — obligatoria = digital accesible o substituto equivalente.
+
 ### Obligatoria
 
-| # | Obra | Autor | Capítulos |
-|---|---|---|---|
-| 1 | *Logic: A Very Short Introduction* o equivalente universitario | Priest / Bergmann | Proposicional + predicados |
-| 2 | *Language, Truth and Logic* (cap. lógica) o extractos | Ayer / Russell | Introducción filosófica |
-| 3 | Extractos *Begriffsschrift* / "On Sense and Reference" | Frege | Lectura guiada S07 |
+| # | Obra | Autor | Acceso | Tier | Substituto |
+|---|---|---|---|---|---|
+| 1 | Classical Logic | — | https://plato.stanford.edu/entries/logic-classical/ | A | — |
+| 2 | *Logic: A Very Short Introduction* | Priest | Open Library / compra | C | SEP + Copi (archive.org) |
+| 3 | "On Sense and Reference" | Frege | PhilPapers / SEP Frege | A | — |
+| 4 | *Language, Truth and Logic* (extractos lógica) | Ayer | archive.org / compra | C | SEP Logic + Priest |
 
-### Complementaria
+### Recomendada (compra sugerida si lectura integral)
+
+| # | Obra | Autor | Por qué | Compra |
+|---|---|---|---|---|
+| 1 | *Introduction to Logic* | Copi / Hurley | Texto fundacional del track F; conviene leer entero | **Compra sugerida** (archive.org si está disponible) |
+
+### Complementaria (no bloquea)
 
 | # | Obra | Autor | Notas |
 |---|---|---|---|
-| 1 | Stanford Encyclopedia: Classical Logic | | Referencia online |
-| 2 | *Introduction to Logic* (capítulos seleccionados) | Copi / Hurley | Ejercicios adicionales |
+| — | — | — | Reservado para profundización |
 
 ## Cronograma sugerido (~8 unidades)
 

@@ -7,9 +7,9 @@
     "fecha_actualizacion": "2026-09-02",
     "modulo_actual": null,
     "modulos_aprobados": 0,
-    "modulos_totales": 42,
+    "modulos_totales": 48,
     "horas_plataforma_total": 0,
-    "horas_orientativas_plan": 2520,
+    "horas_orientativas_plan": 2880,
     "promedio_general": null
   },
   "modulos": {
@@ -54,7 +54,13 @@
     "M39": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
     "M40": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
     "M41": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
-    "M42": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0}
+    "M42": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
+    "M43": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
+    "M44": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
+    "M45": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
+    "M46": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
+    "M47": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0},
+    "M48": {"estado": "bloqueado", "horas_plataforma": 0, "calificacion": null, "fecha_inicio": null, "fecha_aprobacion": null, "intentos_evaluacion": 0}
   },
   "cobertura_carreras": {
     "Filosofía": {"porcentaje": 0, "objetivo": "65-75"},

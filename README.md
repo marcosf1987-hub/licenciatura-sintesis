@@ -1,6 +1,6 @@
 # Licenciatura en yo mismo: Estudios de Síntesis Profunda
 
-Programa personal de formación integral (7–8 años · ~360 h/año · 1 h/día).
+Programa personal de formación integral (8 años · ~360 h/año · 1 h/día).
 
 ## Objetivo
 
@@ -11,9 +11,10 @@ Comprender las estructuras profundas (materiales, psíquicas, lingüísticas y s
 ```
 Licenciatura-en-yo-mismo/
 ├── README.md                 ← Este archivo
-├── plan_general.json         ← Plan curricular completo (42 módulos)
+├── plan_general.json         ← Plan curricular completo (48 módulos)
 ├── config/
 │   ├── modelo_estudio.md          ← Ritmo libre, gates, horas opcionales
+│   ├── politica_bibliografia.md   ← Acceso digital, substitutos, Tier A/B/C
 │   ├── arquitectura.md            ← GitHub + Vercel + Supabase, horas pasivas
 │   ├── reglas_progresion.md       ← Reglas generales de avance
 │   ├── protocolo_evaluacion.md    ← Rúbricas L1/L2/L3, procedimiento completo

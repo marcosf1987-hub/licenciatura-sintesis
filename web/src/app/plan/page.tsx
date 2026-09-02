@@ -1,5 +1,4 @@
 import { ModuleCard } from "@/components/ModuleCard";
-import { OptionalModuleCard } from "@/components/OptionalModuleCard";
 import { plan } from "@/lib/data";
 
 export default function PlanPage() {
@@ -44,19 +43,6 @@ export default function PlanPage() {
           </section>
         );
       })}
-
-      {plan.modulos_opcionales_anio_8 && (
-        <section className="mb-10 opacity-80">
-          <h2 className="mb-4 border-b border-dashed border-stone-300 pb-2 text-lg font-medium dark:border-stone-700">
-            Año 8 — Cola opcional
-          </h2>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {plan.modulos_opcionales_anio_8.map((m) => (
-              <OptionalModuleCard key={m.id} modulo={m} />
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   );
 }

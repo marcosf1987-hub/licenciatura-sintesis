@@ -2,11 +2,11 @@
   "programa": {
     "nombre": "Licenciatura en yo mismo: Estudios de Síntesis Profunda",
     "version": "1.0",
-    "duracion_anios": 7,
-    "modulos_totales": 42,
+    "duracion_anios": 8,
+    "modulos_totales": 48,
     "horas_por_modulo": 60,
     "horas_anuales": 360,
-    "horas_totales": 2520,
+    "horas_totales": 2880,
     "diagnostico_ramas": 252,
     "familias": 13,
     "fecha_cierre_plan": "2026-09-02"
@@ -563,18 +563,88 @@
       "nivel": "L3-L2",
       "horas": 60,
       "prerrequisitos": ["M11", "M33", "M39"],
-      "desbloquea": [],
+      "desbloquea": ["M43"],
       "familias": [5, 12, 13],
       "carreras_ref": ["Psicología", "Folclor"],
-      "notas": "Incluye botánica aplicada y adiestramiento canino avanzada como síntesis final"
+      "notas": "Integrador del Año 7; incluye botánica aplicada y adiestramiento canino avanzada"
+    },
+    {
+      "id": "M43",
+      "nombre": "Arquitectura de Computadoras, Redes y Sistemas Distribuidos",
+      "anio": 8,
+      "orden": 43,
+      "track": "X",
+      "nivel": "L2",
+      "horas": 60,
+      "prerrequisitos": ["M32", "M42"],
+      "desbloquea": ["M44"],
+      "familias": [11],
+      "carreras_ref": ["Ciencias de la Computación"]
+    },
+    {
+      "id": "M44",
+      "nombre": "Psicoanálisis Lacaniano y Gestalt",
+      "anio": 8,
+      "orden": 44,
+      "track": "M",
+      "nivel": "L2",
+      "horas": 60,
+      "prerrequisitos": ["M09", "M27", "M43"],
+      "desbloquea": ["M45"],
+      "familias": [6],
+      "carreras_ref": ["Psicología"]
+    },
+    {
+      "id": "M45",
+      "nombre": "Bioinformática y Filogenia Computacional",
+      "anio": 8,
+      "orden": 45,
+      "track": "V-X",
+      "nivel": "L2",
+      "horas": 60,
+      "prerrequisitos": ["M14", "M32", "M44"],
+      "desbloquea": ["M46"],
+      "familias": [4, 11],
+      "carreras_ref": ["Biología", "Ciencias de la Computación"]
+    },
+    {
+      "id": "M46",
+      "nombre": "Historia Militar, Tecnología Bélica y Geopolítica Avanzada",
+      "anio": 8,
+      "orden": 46,
+      "track": "S",
+      "nivel": "L2",
+      "horas": 60,
+      "prerrequisitos": ["M34", "M45"],
+      "desbloquea": ["M47"],
+      "familias": [7, 10],
+      "carreras_ref": ["Historia", "Ciencias Políticas"]
+    },
+    {
+      "id": "M47",
+      "nombre": "Exégesis Bíblica Avanzada y Teologías Comparadas",
+      "anio": 8,
+      "orden": 47,
+      "track": "H",
+      "nivel": "L2",
+      "horas": 60,
+      "prerrequisitos": ["M39", "M46"],
+      "desbloquea": ["M48"],
+      "familias": [12],
+      "carreras_ref": ["Teología", "Estudios bíblicos"]
+    },
+    {
+      "id": "M48",
+      "nombre": "Semiótica del Cine, Escuela de Frankfurt y Crítica Literaria",
+      "anio": 8,
+      "orden": 48,
+      "track": "H-S",
+      "nivel": "L2",
+      "horas": 60,
+      "prerrequisitos": ["M06", "M30", "M47"],
+      "desbloquea": [],
+      "familias": [10, 12],
+      "carreras_ref": ["Comunicación", "Estudios culturales"]
     }
-  ],
-  "modulos_opcionales_anio_8": [
-    {"id": "M43", "nombre": "Arquitectura de Computadoras, Redes y Sistemas Distribuidos", "track": "X", "prerrequisitos": ["M32"]},
-    {"id": "M44", "nombre": "Psicoanálisis Lacaniano y Gestalt", "track": "M", "prerrequisitos": ["M09", "M27"]},
-    {"id": "M45", "nombre": "Bioinformática y Filogenia Computacional", "track": "V-X", "prerrequisitos": ["M14", "M32"]},
-    {"id": "M46", "nombre": "Historia Militar, Tecnología Bélica y Geopolítica Avanzada", "track": "S", "prerrequisitos": ["M34"]},
-    {"id": "M47", "nombre": "Exégesis Bíblica Avanzada y Teologías Comparadas", "track": "H", "prerrequisitos": ["M39"]},
-    {"id": "M48", "nombre": "Semiótica del Cine, Escuela de Frankfurt y Crítica Literaria", "track": "H-S", "prerrequisitos": ["M06", "M30"]}
   ]
 }

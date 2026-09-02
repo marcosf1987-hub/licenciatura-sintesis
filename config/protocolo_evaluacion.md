@@ -180,7 +180,7 @@ Evaluación **obligatoriamente integradora**:
 |---|---|---|
 | Examen transversal | 40% | Preguntas que crucen ≥ 3 familias del plan (ej. folclor + epistemología + psicopatología) |
 | Proyecto de síntesis | 40% | Trabajo elegido entre: dossier analítico, ensayo largo (2000 palabras), o estudio de caso original |
-| Autobiografía intelectual | 20% | Texto 500–800 palabras: qué cambió en tu modelo del mundo tras 7 años |
+| Autobiografía intelectual | 20% | Texto 500–800 palabras: qué cambió en tu modelo del mundo tras los 8 años del programa |
 
 ---
 

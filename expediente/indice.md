@@ -10,9 +10,9 @@
 
 | Métrica | Valor |
 |---|---|
-| Módulos aprobados | 0 / 42 |
+| Módulos aprobados | 0 / 48 |
 | Horas en plataforma (opcional, solo stats) | 0 |
-| Referencia orientativa del plan | ~2.520 h (~60 h/módulo) |
+| Referencia orientativa del plan | ~2.880 h (~60 h/módulo) |
 | Módulo actual | — |
 | Promedio general | — |
 | Año académico | 1 |
@@ -57,6 +57,7 @@
 | 5 | M25–M30 | T, V, M, F | bloqueado |
 | 6 | M31–M36 | X, M, S, T, F | bloqueado |
 | 7 | M37–M42 | S, H, V, H-M | bloqueado |
+| 8 | M43–M48 | X, M, V, S, H | bloqueado |
 
 *Detalle completo en `plan_general.json`.*
 

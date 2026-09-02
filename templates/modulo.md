@@ -37,15 +37,25 @@ Al aprobar este módulo deberías poder:
 
 ### Obligatoria
 
-| # | Obra | Autor | Capítulos / páginas |
-|---|---|---|---|
-| 1 | | | |
+> Política: `config/politica_bibliografia.md` — todo ítem obligatorio debe ser accesible en digital (Tier A/B) o tener substituto documentado.
 
-### Complementaria
+| # | Obra | Autor | Acceso / URL | Tier | Substituto |
+|---|---|---|---|---|---|
+| 1 | | | | A/B/C | |
+
+### Recomendada (no bloquea; compra sugerida si lectura integral)
+
+> Libros fundacionales que conviene leer **enteros**. La compra tiene sentido aquí; no es requisito para evaluar.
+
+| # | Obra | Autor | Por qué | Compra |
+|---|---|---|---|---|
+| 1 | | | | Compra sugerida / archive.org |
+
+### Complementaria (no bloquea avance)
 
 | # | Obra | Autor | Notas |
 |---|---|---|---|
-| 1 | | | |
+| 1 | | | Solo si conseguís copia; no requerida |
 
 ## Cronograma (8 semanas)
 
