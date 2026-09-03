@@ -22,3 +22,11 @@ const keyFromEnv = clean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 export const supabaseAnonKey = keyFromEnv.startsWith("eyJ")
   ? keyFromEnv
   : FALLBACK_KEY;
+
+/** Único correo autorizado. Definilo en Vercel / .env.local */
+export const allowedEmail = clean(process.env.NEXT_PUBLIC_ALLOWED_EMAIL).toLowerCase();
+
+export function isAllowedEmail(email: string | null | undefined): boolean {
+  if (!allowedEmail) return false;
+  return (email ?? "").trim().toLowerCase() === allowedEmail;
+}
