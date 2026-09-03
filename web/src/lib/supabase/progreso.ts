@@ -4,8 +4,6 @@
  */
 import { createClient } from "./client";
 
-// ── Tipos ──────────────────────────────────────────────────────────────────
-
 export type EstadoModulo =
   | "bloqueado"
   | "disponible"
@@ -28,10 +26,16 @@ export interface ChecklistItem {
   checked: boolean;
 }
 
-// ── Expediente completo ────────────────────────────────────────────────────
+export interface GateStatus {
+  programaPct: number;
+  biblioCompleta: boolean;
+  tieneArtefacto: boolean;
+  puedeEvaluar: boolean;
+}
 
 export async function getExpediente() {
   const supabase = createClient();
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("modulo_estado")
     .select("modulo_id, estado, calificacion, fecha_inicio, fecha_aprobacion, intentos_evaluacion")
@@ -40,10 +44,9 @@ export async function getExpediente() {
   return data ?? [];
 }
 
-// ── Estado de un módulo ────────────────────────────────────────────────────
-
 export async function getModuloEstado(moduloId: string): Promise<ModuloEstado | null> {
   const supabase = createClient();
+  if (!supabase) return null;
   const { data, error } = await supabase
     .from("modulo_estado")
     .select("estado, calificacion, fecha_inicio, fecha_aprobacion, intentos_evaluacion")
@@ -59,6 +62,7 @@ export async function setModuloEstado(
   extra?: Partial<Omit<ModuloEstado, "estado">>
 ) {
   const supabase = createClient();
+  if (!supabase) throw new Error("Supabase no disponible");
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("No autenticado");
 
@@ -74,10 +78,9 @@ export async function setModuloEstado(
   if (error) throw error;
 }
 
-// ── Checklist ──────────────────────────────────────────────────────────────
-
 export async function getChecklist(moduloId: string): Promise<ChecklistItem[]> {
   const supabase = createClient();
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("checklist_items")
     .select("item_key, item_type, checked")
@@ -93,6 +96,7 @@ export async function setChecklistItem(
   checked: boolean
 ) {
   const supabase = createClient();
+  if (!supabase) throw new Error("Supabase no disponible");
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("No autenticado");
 
@@ -105,10 +109,9 @@ export async function setChecklistItem(
   if (error) throw error;
 }
 
-// ── Artefactos ─────────────────────────────────────────────────────────────
-
 export async function getArtefactos(moduloId: string) {
   const supabase = createClient();
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("artefactos")
     .select("id, nombre, tipo, contenido, created_at")
@@ -125,6 +128,7 @@ export async function addArtefacto(
   contenido: string
 ) {
   const supabase = createClient();
+  if (!supabase) throw new Error("Supabase no disponible");
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("No autenticado");
 
@@ -134,32 +138,20 @@ export async function addArtefacto(
   if (error) throw error;
 }
 
-// ── Gate: ¿puede evaluar? ─────────────────────────────────────────────────
-
-export interface GateStatus {
-  programaPct: number;        // 0–100
-  biblioCompleta: boolean;
-  tieneArtefacto: boolean;
-  puedeEvaluar: boolean;      // los tres gates OK
-}
-
-// ── Registrar aprobación y desbloquear dependientes ────────────────────────
-
 export async function registrarAprobacion(
   moduloId: string,
   calificacion: number
 ) {
   const supabase = createClient();
+  if (!supabase) throw new Error("Supabase no disponible");
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("No autenticado");
 
-  // 1. Actualizar estado del módulo
   await setModuloEstado(moduloId, "aprobado", {
     calificacion,
     fecha_aprobacion: new Date().toISOString(),
   });
 
-  // 2. Llamar función RPC que desbloquea dependientes
   const { error } = await supabase.rpc("desbloquear_dependientes", {
     p_user_id: user.id,
     p_modulo_aprobado: moduloId,
@@ -167,10 +159,11 @@ export async function registrarAprobacion(
   if (error) throw error;
 }
 
-// ── Gate: ¿puede evaluar? ─────────────────────────────────────────────────
-
 export async function calcularGate(moduloId: string, totalUnidades = 8): Promise<GateStatus> {
   const supabase = createClient();
+  if (!supabase) {
+    return { programaPct: 0, biblioCompleta: false, tieneArtefacto: false, puedeEvaluar: false };
+  }
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { programaPct: 0, biblioCompleta: false, tieneArtefacto: false, puedeEvaluar: false };
 
@@ -179,9 +172,9 @@ export async function calcularGate(moduloId: string, totalUnidades = 8): Promise
     getArtefactos(moduloId),
   ]);
 
-  const programa = checklist.filter(i => i.item_type === "programa" && i.checked);
-  const biblio = checklist.filter(i => i.item_type === "biblio");
-  const biblioChecked = checklist.filter(i => i.item_type === "biblio" && i.checked);
+  const programa = checklist.filter((i) => i.item_type === "programa" && i.checked);
+  const biblio = checklist.filter((i) => i.item_type === "biblio");
+  const biblioChecked = checklist.filter((i) => i.item_type === "biblio" && i.checked);
 
   const programaPct = Math.round((programa.length / totalUnidades) * 100);
   const biblioCompleta = biblio.length > 0 && biblio.length === biblioChecked.length;

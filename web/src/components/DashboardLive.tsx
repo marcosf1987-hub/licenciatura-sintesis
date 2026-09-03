@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { getExpediente, type EstadoModulo } from "@/lib/supabase/progreso";
-import { plan } from "@/lib/data";
+import { getEstadoModulo, plan } from "@/lib/data";
 import { ModuleCard } from "./ModuleCard";
 import { ProgressRing } from "./ProgressRing";
 import { StatusBadge } from "./StatusBadge";
@@ -25,6 +25,10 @@ export function DashboardLive() {
 
   useEffect(() => {
     const supabase = createClient();
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
     supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_, session) => setUser(session?.user ?? null)
@@ -43,8 +47,7 @@ export function DashboardLive() {
   function getEstado(id: string): EstadoModulo {
     const row = rows.find(r => r.modulo_id === id);
     if (row) return row.estado;
-    // fallback al JSON estático
-    return "bloqueado";
+    return getEstadoModulo(id) as EstadoModulo;
   }
 
   const aprobados = rows.filter(r => r.estado === "aprobado").length;

@@ -14,6 +14,11 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
     const supabase = createClient();
+    if (!supabase) {
+      setError("No se pudo conectar con Supabase.");
+      setLoading(false);
+      return;
+    }
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {

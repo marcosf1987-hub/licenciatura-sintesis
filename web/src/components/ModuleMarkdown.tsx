@@ -60,6 +60,10 @@ function ProgresoProvider({ children, moduloId, totalUnidades = 8 }: {
 
   useEffect(() => {
     const supabase = createClient();
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
     supabase.auth.getUser().then(({ data }) => setUser(data.user ? { id: data.user.id } : null));
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_, session) => setUser(session?.user ? { id: session.user.id } : null)

@@ -15,6 +15,7 @@ export function Nav() {
 
   useEffect(() => {
     const supabase = createClient();
+    if (!supabase) return;
     supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_, session) => setUser(session?.user ?? null)
@@ -24,6 +25,7 @@ export function Nav() {
 
   async function handleLogout() {
     const supabase = createClient();
+    if (!supabase) return;
     await supabase.auth.signOut();
     setUser(null);
   }

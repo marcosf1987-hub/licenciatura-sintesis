@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   title: "Estudios de Síntesis Profunda",
   description:
     "Licenciatura en yo mismo — programa personal de formación integral",
-  manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     title: "Síntesis Profunda",
