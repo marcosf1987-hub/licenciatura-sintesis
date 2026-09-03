@@ -173,11 +173,10 @@ export async function calcularGate(moduloId: string, totalUnidades = 8): Promise
   ]);
 
   const programa = checklist.filter((i) => i.item_type === "programa" && i.checked);
-  const biblio = checklist.filter((i) => i.item_type === "biblio");
   const biblioChecked = checklist.filter((i) => i.item_type === "biblio" && i.checked);
 
   const programaPct = Math.round((programa.length / totalUnidades) * 100);
-  const biblioCompleta = biblio.length > 0 && biblio.length === biblioChecked.length;
+  const biblioCompleta = biblioChecked.length >= Math.ceil(totalUnidades * 0.9);
   const tieneArtefacto = artefactos.length > 0;
   const puedeEvaluar = programaPct >= 90 && biblioCompleta && tieneArtefacto;
 

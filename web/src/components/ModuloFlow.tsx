@@ -24,10 +24,7 @@ export function UnidadIndex({
 
   return (
     <section className="mt-10">
-      <h2 className="mb-3 text-lg font-medium">Unidades</h2>
-      <p className="mb-4 text-sm text-stone-500">
-        Andá en orden. Al terminar una, se abre la siguiente.
-      </p>
+      <h2 className="mb-4 text-lg font-medium">Unidades</h2>
       <ol className="space-y-2">
         {unidades.map((u, i) => {
           const done = isChecked(u.id);
@@ -106,12 +103,13 @@ export function CompletarUnidad({
       return;
     }
     setBusy(true);
+    await mark(`${unidad.id}_BIBLIO`, "biblio");
     await mark(unidad.id, "programa");
     setBusy(false);
     if (siguiente) {
       router.push(`/modulo/${slug}/${siguiente.slug}`);
     } else {
-      router.push(`/modulo/${slug}`);
+      router.push(`/modulo/${slug}/${unidad.slug}`);
     }
   }
 
@@ -158,7 +156,6 @@ export function ModuloIntroBody({
       {unidades.length > 0 ? (
         <UnidadIndex moduloId={moduloId} unidades={unidades} />
       ) : null}
-      <GatePanel />
     </>
   );
 }
@@ -201,8 +198,9 @@ export function UnidadBody({
   return (
     <>
       <AuthBanner />
-      <MarkdownBody content={unidad.body} />
+      <MarkdownBody content={unidad.body} unidadId={unidad.id} />
       <CompletarUnidad moduloId={moduloId} unidad={unidad} siguiente={siguiente} />
+      {!siguiente && <GatePanel />}
       <nav className="mt-6 flex justify-between text-sm text-stone-500">
         {anterior ? (
           <Link href={`/modulo/${slug}/${anterior.slug}`} className="hover:text-stone-800 dark:hover:text-stone-200">

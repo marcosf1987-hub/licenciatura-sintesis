@@ -8,37 +8,34 @@
 4. Leer a Frege (sentido y referencia) y el problema de la identidad.
 5. Dejar base para filosofía del lenguaje (M10).
 
-## Lecturas
+## Bibliografía obligatoria
 
-Si no se indica un recorte, leé el texto entero.
-
-### Obligatorio
-
-| Qué | Cuánto | Dónde |
+| Obra | Alcance | Enlace |
 |---|---|---|
-| [Classical Logic (SEP)](https://plato.stanford.edu/entries/logic-classical/) | Por unidad (mapa). No de una sentada. | Gratis |
-| Frege, *On Sense and Reference* | Completo + [SEP Frege](https://plato.stanford.edu/entries/frege/) §2–3 | Gratis |
+| Classical Logic (Stanford Encyclopedia of Philosophy) | Ver indicación en cada unidad | [Abrir](https://plato.stanford.edu/entries/logic-classical/) |
+| Frege, «On Sense and Reference» | Texto completo | [Abrir (SEP Frege)](https://plato.stanford.edu/entries/frege/) |
+| Frege (Stanford Encyclopedia of Philosophy) | Secciones 2–3 | [Abrir](https://plato.stanford.edu/entries/frege/) |
 
-Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
+## Lecturas por unidad
 
-- [ ] Bibliografía obligatoria leída
+*(§ = sección / apartado del artículo, no capítulo de un libro.)*
 
-### Mapa SEP ↔ unidad
-
-| Unidad | Qué leer |
+| Unidad | Qué leer en Classical Logic (SEP) u otras fuentes |
 |---|---|
-| U1 | §1–2 y el inicio de §3 (conectivos ¬ ∧ ∨) |
-| U2 | §3 completo y §4.1 |
-| U3 | §4.2–4.3 |
-| U4 | §5 |
-| U5 | §6 hasta cuantificadores |
-| U6 | resto de §6; §7 (lo esencial); [Identity](https://plato.stanford.edu/entries/identity/) §1–2 |
-| U7 | Frege completo + SEP Frege §2–3 |
+| U1 | Secciones 1–2 y el inicio de la 3 (conectivos ¬ ∧ ∨) |
+| U2 | Sección 3 completa y 4.1 |
+| U3 | Secciones 4.2–4.3 |
+| U4 | Sección 5 |
+| U5 | Sección 6 hasta cuantificadores |
+| U6 | Resto de la sección 6; sección 7 (lo esencial); [Identity](https://plato.stanford.edu/entries/identity/) secciones 1–2 |
+| U7 | Frege (texto completo) + SEP Frege secciones 2–3 |
 | U8 | Repaso |
 
-### Recomendado (libro entero)
+## Bibliografía complementaria
 
-*Introduction to Logic* (Copi / Hurley). Tiene sentido comprarlo si lo vas a leer de tapa a tapa.
+| Obra | Autor |
+|---|---|
+| *Introduction to Logic* | Copi / Hurley |
 
 ## Detalle por unidad
 
@@ -52,12 +49,13 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Definir **validez** (si premisas verdaderas → conclusión verdadera) y **solidez** (válido + premisas verdaderas).
 - Reconocer estructura premisa–conclusión en prosa; introducir letras proposicionales.
 
-**Lecturas obligatorias**
+**Lecturas**
 
-| Fuente | Qué leer |
-|---|---|
-| [SEP — Classical Logic](https://plato.stanford.edu/entries/logic-classical/) | §1 *Introduction*; §2 *Arguments* (hasta validez/solidez) |
-| Substituto Priest | SEP §3 *The Language of Propositional Logic* (solo conectivos básicos: ¬, ∧, ∨) |
+| Obra | Qué leer | Enlace |
+|---|---|---|
+| Classical Logic (SEP) | Secciones 1–2; inicio de la 3 (conectivos ¬ ∧ ∨) | [Abrir](https://plato.stanford.edu/entries/logic-classical/) |
+
+- [ ] Lecturas de esta unidad
 
 **Práctica mínima (~3 h)**
 
@@ -83,12 +81,13 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Construir tablas de verdad para fórmulas de hasta 3–4 letras.
 - Detectar contigencia, tautología y contradicción en tablas.
 
-**Lecturas obligatorias**
+**Lecturas**
 
-| Fuente | Qué leer |
-|---|---|
-| SEP Classical Logic | §3 *The Language of Propositional Logic* (completo); §4.1 *Truth Functions* |
-| Substituto Priest | Mismos temas vía SEP; opcional Copi/Hurley cap. 1–2 si tenés el libro |
+| Obra | Qué leer | Enlace |
+|---|---|---|
+| Classical Logic (SEP) | Sección 3 completa; sección 4.1 | [Abrir](https://plato.stanford.edu/entries/logic-classical/) |
+
+- [ ] Lecturas de esta unidad
 
 **Práctica mínima (~4 h)**
 
@@ -114,12 +113,13 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Obtener formas normales (CNF/DNF) en casos simples.
 - Reconocer falacias formales: afirmación del consecuente, negación del antecedente, etc.
 
-**Lecturas obligatorias**
+**Lecturas**
 
-| Fuente | Qué leer |
-|---|---|
-| SEP Classical Logic | §4.2 *Tautologies*; §4.3 *Normal Forms* (hasta CNF/DNF básico) |
-| Substituto Ayer | SEP §4 + notas propias sobre “lógica y significado” (no hace falta el libro) |
+| Obra | Qué leer | Enlace |
+|---|---|---|
+| Classical Logic (SEP) | Secciones 4.2–4.3 (hasta CNF/DNF básico) | [Abrir](https://plato.stanford.edu/entries/logic-classical/) |
+
+- [ ] Lecturas de esta unidad
 
 **Práctica mínima (~4 h)**
 
@@ -144,12 +144,13 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Distinguir derivabilidad (⊢) de validez semántica (⊨) a nivel intuitivo.
 - Leer pruebas en formato de líneas numeradas.
 
-**Lecturas obligatorias**
+**Lecturas**
 
-| Fuente | Qué leer |
-|---|---|
-| SEP Classical Logic | §5 *Proof Theory* (intro + reglas proposicionales; no hace falta cálculo de secuentes completo) |
-| Recomendado Copi/Hurley | Cap. sobre deducción natural (si tenés el libro) |
+| Obra | Qué leer | Enlace |
+|---|---|---|
+| Classical Logic (SEP) | Sección 5 (intro + reglas proposicionales) | [Abrir](https://plato.stanford.edu/entries/logic-classical/) |
+
+- [ ] Lecturas de esta unidad
 
 **Práctica mínima (~5 h)**
 
@@ -174,12 +175,13 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Formalizar enunciados con “todos”, “algunos”, “ningún”, “exactamente uno” (intro).
 - Entender **dominio de cuantificación** e **interpretación** (modelo mínimo).
 
-**Lecturas obligatorias**
+**Lecturas**
 
-| Fuente | Qué leer |
-|---|---|
-| SEP Classical Logic | §6 *The Language of First-Order Logic* (hasta cuantificadores y fórmulas bien formadas) |
-| Substituto Priest | SEP §6 + ejemplos propios de traducción |
+| Obra | Qué leer | Enlace |
+|---|---|---|
+| Classical Logic (SEP) | Sección 6 hasta cuantificadores y fórmulas bien formadas | [Abrir](https://plato.stanford.edu/entries/logic-classical/) |
+
+- [ ] Lecturas de esta unidad
 
 **Práctica mínima (~4 h)**
 
@@ -204,12 +206,14 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Manejar **orden de cuantificadores** (∀∃ vs ∃∀).
 - Formalizar argumentos de 3–4 premisas en FOL.
 
-**Lecturas obligatorias**
+**Lecturas**
 
-| Fuente | Qué leer |
-|---|---|
-| SEP Classical Logic | §6 (resto: identidad, funciones si aparecen); §7 *Classical Logic* (semántica Tarski — lectura selectiva) |
-| SEP — Identity | [Identity](https://plato.stanford.edu/entries/identity/) §1–2 (opcional pero útil) |
+| Obra | Qué leer | Enlace |
+|---|---|---|
+| Classical Logic (SEP) | Resto de la sección 6; sección 7 (lectura selectiva) | [Abrir](https://plato.stanford.edu/entries/logic-classical/) |
+| Identity (SEP) | Secciones 1–2 | [Abrir](https://plato.stanford.edu/entries/identity/) |
+
+- [ ] Lecturas de esta unidad
 
 **Práctica mínima (~4 h)**
 
@@ -234,19 +238,20 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Distinguir **Sinn** y **Bedeutung** en oraciones, nombres y oraciones completas.
 - Conectar lógica formal con filosofía del lenguaje (puente hacia M10).
 
-**Lecturas obligatorias**
+**Lecturas**
 
-| Fuente | Qué leer |
-|---|---|
-| Frege — "On Sense and Reference" | Texto completo (trad. Geach & Black o similar online) |
-| [SEP — Frege](https://plato.stanford.edu/entries/frege/) | §2 *The Argument for Sense*; §3 *The Sense and Reference of Names* |
-| Substituto Ayer | SEP Frege + notas; extractos en archive.org solo si ya los tenés |
+| Obra | Qué leer | Enlace |
+|---|---|---|
+| Frege, «On Sense and Reference» | Texto completo | [Abrir (SEP Frege)](https://plato.stanford.edu/entries/frege/) |
+| Frege (SEP) | Secciones 2–3 | [Abrir](https://plato.stanford.edu/entries/frege/) |
+
+- [ ] Lecturas de esta unidad
 
 **Práctica mínima (~3 h)**
 
 1. Resumen estructurado (1–2 páginas): tesis central, 3 ejemplos (Estrella del Alba/Venus, “Hespero es Fosforo”, oraciones).
 2. **3 preguntas** de aplicación: sustitutividad salva veritate, oraciones indirectas, referencia de oraciones (verdadero/falso).
-3. Bosquejo del ensayo de evaluación (§ abajo): 5 bullets “¿Por qué Frege necesitaba lógica formal?”
+3. Bosquejo del ensayo: 5 bullets “¿Por qué Frege necesitaba lógica formal?”
 
 **Artefacto sugerido:** `artefactos/u7-frege-resumen.md` (base del ensayo final).
 
@@ -264,25 +269,27 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 - Cerrar lagunas; unificar proposicional + predicados + Frege.
 - Cerrar el módulo y pedir la evaluación.
 
+**Lecturas**
+
+Repaso de las secciones ya vistas en U1–U7 (Classical Logic + Frege).
+
+- [ ] Lecturas de esta unidad
+
 **Repaso dirigido (~5 h)**
 
 | Bloque | Actividad |
 |---|---|
 | Proposicional | 5 tablas + 3 derivaciones bajo tiempo (30 min c/u max) |
 | Predicados | 8 traducciones mixtas + 2 contraejemplos ∃∀ |
-| Frege | Releer tu resumen U7; preparar esquema ensayo 600–900 palabras |
+| Frege | Releer tu resumen U7; preparar esquema del ensayo |
 | Integrador | 1 problema: formalizar argumento filosófico en FOL y comentar validez |
-
-Cuando U1–U7, lecturas y un artefacto estén listos, pedí la evaluación al final de la página.
 
 **Ensayo** — borrador antes de rendir:
 
 > *“¿Por qué Frege necesitaba lógica formal?”* (600–900 palabras)  
 > Debe citar o parafrasear Frege y conectar con al menos un tema de U1–U6 (validez, formalización, cuantificadores).
 
----
-
-## Cómo te evalúan
+### Criterio de evaluación
 
 Aprobado: **70%** o más. Cada parte pide al menos 50%.
 

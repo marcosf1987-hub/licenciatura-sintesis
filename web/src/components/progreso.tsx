@@ -210,7 +210,7 @@ export function GatePanel() {
       <ul className="mb-4 space-y-1.5 text-xs">
         {[
           { ok: gate.programaPct >= 90, label: "Al menos 7 de 8 unidades" },
-          { ok: gate.biblioCompleta, label: "Lecturas obligatorias" },
+          { ok: gate.biblioCompleta, label: "Lecturas de cada unidad" },
           { ok: gate.tieneArtefacto, label: "Un trabajo guardado (artefacto)" },
         ].map(({ ok, label }) => (
           <li
@@ -252,18 +252,29 @@ function extractText(node: ReactNode): string {
 
 function itemKeyFromText(
   text: string,
-  idx: number
+  idx: number,
+  unidadId?: string
 ): { key: string; itemType: ChecklistItem["item_type"] } {
   const t = text.trim();
   const uMatch = t.match(/^\*{0,2}(U\d+)\*{0,2}/i);
   if (uMatch) return { key: uMatch[1].toUpperCase(), itemType: "programa" };
   const u2 = t.toUpperCase();
-  if (/BIBLIO|BIBLIOGRAF|LECTURA OBLIGATORIA/.test(u2))
-    return { key: `BIBLIO_${idx}`, itemType: "biblio" };
-  return { key: `ITEM_${idx}`, itemType: "evidencia" };
+  if (/LECTURAS DE ESTA UNIDAD|BIBLIO|BIBLIOGRAF|LECTURA OBLIGATORIA/.test(u2)) {
+    return {
+      key: unidadId ? `${unidadId}_BIBLIO` : `BIBLIO_${idx}`,
+      itemType: "biblio",
+    };
+  }
+  return { key: unidadId ? `${unidadId}_ITEM_${idx}` : `ITEM_${idx}`, itemType: "evidencia" };
 }
 
-export function MarkdownBody({ content }: { content: string }) {
+export function MarkdownBody({
+  content,
+  unidadId,
+}: {
+  content: string;
+  unidadId?: string;
+}) {
   const { user, isChecked, toggle } = useProgreso();
   const taskIdxRef = useRef(0);
   const cellIdxRef = useRef(0);
@@ -295,7 +306,7 @@ export function MarkdownBody({ content }: { content: string }) {
 
             const text = extractText(children);
             const idx = taskIdxRef.current++;
-            const { key: itemKey, itemType } = itemKeyFromText(text, idx);
+            const { key: itemKey, itemType } = itemKeyFromText(text, idx, unidadId);
             const checked = user ? isChecked(itemKey) : false;
 
             return (
@@ -329,7 +340,7 @@ export function MarkdownBody({ content }: { content: string }) {
             const match = text.match(/^\[([ xX])\]$/);
             if (match) {
               const idx = cellIdxRef.current++;
-              const itemKey = `cell_${idx}`;
+              const itemKey = unidadId ? `${unidadId}_cell_${idx}` : `cell_${idx}`;
               const defChecked = match[1].toLowerCase() === "x";
               const checked = user ? isChecked(itemKey) : defChecked;
               return (

@@ -34,7 +34,8 @@ export function parseModuloMarkdown(raw: string): ModuloDoc {
     const num = Number(match[2]);
     const title = match[3].trim();
     let body = chunk.slice(match[0].length).trim();
-    const extraHeading = body.search(/^## /m);
+    // Solo cortar si aparece un ## de nivel módulo (no ### de subsección)
+    const extraHeading = body.search(/^## [^#]/m);
     if (extraHeading >= 0) {
       cola += body.slice(extraHeading);
       body = body.slice(0, extraHeading).trim();
@@ -48,12 +49,10 @@ export function parseModuloMarkdown(raw: string): ModuloDoc {
     });
   }
 
-  if (cola.trim()) {
-    intro = `${intro}\n\n${cola.trim()}`;
-  }
-
-  if (!/Bibliografía obligatoria/i.test(intro)) {
-    intro += "\n\n- [ ] Bibliografía obligatoria leída\n";
+  // Material suelto al final (si quedó) se agrega a la última unidad, no a la intro
+  if (cola.trim() && unidades.length > 0) {
+    const last = unidades[unidades.length - 1];
+    last.body = `${last.body}\n\n${cola.trim()}`;
   }
 
   return { intro, unidades };
