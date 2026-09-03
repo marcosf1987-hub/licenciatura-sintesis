@@ -66,4 +66,4 @@ Deploy: ver `DEPLOY.md` (GitHub + Vercel, root directory = `web`).
 
 ## Próximo paso operativo
 
-Diseñar el **M01 — Lógica Proposicional y de Predicados** (programa semanal + bibliografía + rúbrica).
+**Iniciar M01 — U1** (`expediente/modulos/M01-logica-proposicional-predicados/modulo.md`). Programa detallado por unidad listo; siguiente hito: completar U1 y primer artefacto.

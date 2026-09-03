@@ -2,8 +2,7 @@ import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { ModuleMarkdown } from "@/components/ModuleMarkdown";
 import { StatusBadge } from "@/components/StatusBadge";
 import {
   getModulo,
@@ -109,9 +108,7 @@ export default async function ModuloPage({
       )}
 
       {markdown ? (
-        <article className="prose prose-stone max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-stone-800 dark:prose-a:text-stone-200">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
-        </article>
+        <ModuleMarkdown content={markdown} moduloId={moduloId} />
       ) : (
         <div className="rounded-xl border border-dashed border-stone-300 p-8 text-center dark:border-stone-700">
           <p className="text-sm text-stone-500">
@@ -134,7 +131,7 @@ export default async function ModuloPage({
           <li>Evaluación aprobada (≥ 70%)</li>
         </ul>
         <p className="mt-3 text-xs text-stone-400">
-          Fase 2: checklist interactivo, artefactos y evaluación en la plataforma.
+          Iniciá sesión para guardar tu progreso.
         </p>
       </footer>
     </div>

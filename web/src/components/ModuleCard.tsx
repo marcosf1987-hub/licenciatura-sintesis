@@ -3,8 +3,8 @@ import { getEstadoModulo, getTrackLabel } from "@/lib/data";
 import type { ModuloPlan } from "@/types";
 import { StatusBadge } from "./StatusBadge";
 
-export function ModuleCard({ modulo }: { modulo: ModuloPlan }) {
-  const estado = getEstadoModulo(modulo.id);
+export function ModuleCard({ modulo, estadoOverride }: { modulo: ModuloPlan; estadoOverride?: string }) {
+  const estado = estadoOverride ?? getEstadoModulo(modulo.id);
   const bloqueado = estado === "bloqueado";
 
   return (
