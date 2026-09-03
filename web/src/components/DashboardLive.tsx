@@ -64,21 +64,17 @@ export function DashboardLive() {
           label="Progreso global"
         />
         <div className="space-y-3 text-sm">
+          {user?.email && (
+            <div>
+              <p className="text-stone-500">Sesión</p>
+              <p className="truncate font-medium">{user.email}</p>
+            </div>
+          )}
           <div>
-            <p className="text-stone-500">Titular</p>
-            <p className="font-medium">
-              {user ? (user.email ?? "Marcos") : "Marcos"}
-            </p>
-          </div>
-          <div>
-            <p className="text-stone-500">Módulos aprobados</p>
+            <p className="text-stone-500">Aprobados</p>
             <p className="font-medium tabular-nums">
               {loading ? "…" : `${aprobados} / ${total}`}
             </p>
-          </div>
-          <div>
-            <p className="text-stone-500">Plan orientativo</p>
-            <p className="font-medium tabular-nums">~2.880 h</p>
           </div>
         </div>
       </section>

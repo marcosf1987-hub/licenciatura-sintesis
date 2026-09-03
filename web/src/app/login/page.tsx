@@ -39,7 +39,7 @@ export default function LoginPage() {
         Acceder al expediente
       </h1>
       <p className="mb-8 text-sm text-stone-500 dark:text-stone-400">
-        Te enviamos un link mágico a tu email. Sin contraseña.
+        Te mandamos un enlace al correo. Sin contraseña.
       </p>
 
       {sent ? (

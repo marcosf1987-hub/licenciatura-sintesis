@@ -147,7 +147,7 @@ function AuthBanner() {
       <Link href="/login" className="font-medium underline underline-offset-2">
         Iniciá sesión
       </Link>{" "}
-      para guardar tu progreso y habilitar la evaluación.
+      para guardar el progreso en tu cuenta.
     </div>
   );
 }
@@ -166,12 +166,12 @@ function GatePanel() {
   return (
     <div className="mt-10 rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-800 dark:bg-stone-900/40">
       <p className="mb-3 text-sm font-medium text-stone-800 dark:text-stone-200">
-        Progreso hacia evaluación
+        ¿Listo para evaluar?
       </p>
 
       <div className="mb-3">
         <div className="mb-1 flex justify-between text-xs text-stone-500">
-          <span>Programa cubierto</span>
+          <span>Unidades hechas</span>
           <span className={gate.programaPct >= 90 ? "font-medium text-emerald-600" : ""}>{gate.programaPct}%</span>
         </div>
         <div className="h-2 w-full overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
@@ -184,9 +184,9 @@ function GatePanel() {
 
       <ul className="mb-4 space-y-1.5 text-xs">
         {[
-          { ok: gate.programaPct >= 90, label: "Programa ≥ 90%" },
-          { ok: gate.biblioCompleta, label: "Bibliografía obligatoria leída" },
-          { ok: gate.tieneArtefacto, label: "≥ 1 artefacto de estudio" },
+          { ok: gate.programaPct >= 90, label: "Al menos 7 de 8 unidades" },
+          { ok: gate.biblioCompleta, label: "Lecturas obligatorias" },
+          { ok: gate.tieneArtefacto, label: "Un trabajo guardado (artefacto)" },
         ].map(({ ok, label }) => (
           <li key={label} className={`flex items-center gap-2 ${ok ? "text-emerald-600 dark:text-emerald-400" : "text-stone-400"}`}>
             <span className="w-4 text-center">{ok ? "✓" : "○"}</span>
@@ -197,7 +197,7 @@ function GatePanel() {
 
       {yaEvaluacion ? (
         <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
-          {estado === "aprobado" ? "✓ Módulo aprobado" : "⏳ Evaluación solicitada — contactar al Agente Evaluador"}
+          {estado === "aprobado" ? "Módulo aprobado" : "Evaluación pedida. Pedile la corrección al agente evaluador."}
         </p>
       ) : (
         <button
@@ -205,7 +205,7 @@ function GatePanel() {
           disabled={!gate.puedeEvaluar}
           className="w-full rounded-lg bg-stone-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-40 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
         >
-          {gate.puedeEvaluar ? "Solicitar evaluación" : "Gates pendientes"}
+          {gate.puedeEvaluar ? "Pedir evaluación" : "Todavía faltan requisitos"}
         </button>
       )}
     </div>
@@ -216,18 +216,33 @@ function GatePanel() {
 // Markdown renderer con checkboxes conectados al contexto
 // ─────────────────────────────────────────────────────────────────────────────
 
+function prepareMarkdown(raw: string): string {
+  return raw
+    .replace(/^# .+\n+/, "")
+    .replace(/^>\s*\*\*Estado:\*\*.+\n+/, "")
+    .trim();
+}
+
 function MarkdownContent({ content }: { content: string }) {
   const { user, isChecked, toggle } = useContext(Ctx);
   const taskIdxRef = useRef(0);
   const cellIdxRef = useRef(0);
   taskIdxRef.current = 0;
   cellIdxRef.current = 0;
+  const body = prepareMarkdown(content);
 
   return (
-    <article className="prose prose-stone max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-stone-800 dark:prose-a:text-stone-200 prose-li:my-0.5">
+    <article className="prose prose-stone max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-stone-800 prose-table:text-sm dark:prose-a:text-stone-200 prose-li:my-0.5">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          table({ children }) {
+            return (
+              <div className="-mx-4 mb-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+                <table>{children}</table>
+              </div>
+            );
+          },
           li({ children, ...props }) {
             const childArr = Array.isArray(children) ? children : [children];
             const hasCheckbox = childArr.some(
@@ -278,7 +293,7 @@ function MarkdownContent({ content }: { content: string }) {
           },
         }}
       >
-        {content}
+        {body}
       </ReactMarkdown>
     </article>
   );

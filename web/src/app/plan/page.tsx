@@ -8,24 +8,21 @@ export default function PlanPage() {
     <div className="mx-auto max-w-3xl px-4 py-8">
       <h1 className="mb-2 text-2xl font-semibold tracking-tight">Plan de estudios</h1>
       <p className="mb-8 text-sm text-stone-600 dark:text-stone-400">
-        {plan.modulos.length} módulos · {plan.programa.familias} familias ·{" "}
-        {plan.programa.diagnostico_ramas} ramas diagnosticadas · ritmo libre
+        {plan.modulos.length} módulos en 8 años · ritmo libre
       </p>
 
-      <div className="mb-10 rounded-xl border border-stone-200 bg-stone-50 p-4 dark:border-stone-800 dark:bg-stone-900/40">
-        <h2 className="mb-2 text-sm font-medium text-stone-700 dark:text-stone-300">
-          Tracks
-        </h2>
-        <ul className="grid gap-1 text-xs text-stone-600 dark:text-stone-400 sm:grid-cols-2">
-          {Object.entries(plan.tracks).map(([key, label]) => (
-            <li key={key}>
-              <span className="font-mono font-medium text-stone-800 dark:text-stone-200">
-                {key}
-              </span>{" "}
-              — {label}
-            </li>
-          ))}
-        </ul>
+      <div className="mb-10 flex flex-wrap gap-2">
+        {Object.entries(plan.tracks).map(([key, label]) => (
+          <span
+            key={key}
+            className="rounded-full border border-stone-200 px-2.5 py-1 text-xs text-stone-600 dark:border-stone-700 dark:text-stone-400"
+          >
+            <span className="font-mono font-medium text-stone-800 dark:text-stone-200">
+              {key}
+            </span>{" "}
+            {label.split(" · ")[0]}
+          </span>
+        ))}
       </div>
 
       {anios.map((anio) => {

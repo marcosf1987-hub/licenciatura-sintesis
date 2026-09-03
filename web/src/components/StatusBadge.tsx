@@ -12,12 +12,21 @@ const styles: Record<string, string> = {
   reprobado: "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300",
 };
 
+const labels: Record<string, string> = {
+  bloqueado: "Bloqueado",
+  disponible: "Disponible",
+  en_curso: "En curso",
+  evaluacion: "A evaluar",
+  aprobado: "Aprobado",
+  reprobado: "Reprobado",
+};
+
 export function StatusBadge({ estado }: { estado: string }) {
   return (
     <span
       className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[estado] ?? styles.bloqueado}`}
     >
-      {estado.replace("_", " ")}
+      {labels[estado] ?? estado.replace("_", " ")}
     </span>
   );
 }

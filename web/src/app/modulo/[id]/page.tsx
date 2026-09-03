@@ -58,8 +58,7 @@ export default async function ModuloPage({
           {modulo.nombre}
         </h1>
         <p className="text-sm text-stone-600 dark:text-stone-400">
-          {getTrackLabel(modulo.track)} · {modulo.nivel} · ~
-          {modulo.horas} h orientativas
+          {getTrackLabel(modulo.track)} · nivel {modulo.nivel.replace("-", " → ")}
         </p>
         {horasPlataforma > 0 && (
           <p className="mt-2 text-xs text-stone-400">
@@ -112,28 +111,10 @@ export default async function ModuloPage({
       ) : (
         <div className="rounded-xl border border-dashed border-stone-300 p-8 text-center dark:border-stone-700">
           <p className="text-sm text-stone-500">
-            Programa detallado pendiente de publicación para {modulo.id}.
-          </p>
-          <p className="mt-2 text-xs text-stone-400">
-            Los metadatos del plan ya están disponibles arriba.
+            El programa detallado de {modulo.id} todavía no está publicado.
           </p>
         </div>
       )}
-
-      <footer className="mt-10 rounded-xl border border-stone-200 bg-stone-50 p-4 text-sm text-stone-600 dark:border-stone-800 dark:bg-stone-900/40 dark:text-stone-400">
-        <p className="font-medium text-stone-800 dark:text-stone-200">
-          Gate para evaluar (ritmo libre)
-        </p>
-        <ul className="mt-2 list-inside list-disc space-y-1 text-xs">
-          <li>Programa ≥ 90% cubierto</li>
-          <li>Bibliografía obligatoria leída</li>
-          <li>≥ 1 artefacto de estudio</li>
-          <li>Evaluación aprobada (≥ 70%)</li>
-        </ul>
-        <p className="mt-3 text-xs text-stone-400">
-          Iniciá sesión para guardar tu progreso.
-        </p>
-      </footer>
     </div>
   );
 }

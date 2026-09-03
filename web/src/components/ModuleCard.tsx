@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getEstadoModulo, getTrackLabel } from "@/lib/data";
+import { getEstadoModulo } from "@/lib/data";
 import type { ModuloPlan } from "@/types";
 import { StatusBadge } from "./StatusBadge";
 
@@ -25,7 +25,7 @@ export function ModuleCard({ modulo, estadoOverride }: { modulo: ModuloPlan; est
         {modulo.nombre}
       </h3>
       <p className="text-xs text-stone-500">
-        {getTrackLabel(modulo.track)} · {modulo.nivel}
+        {modulo.track} · {modulo.nivel.replace("-", " → ")}
       </p>
     </Link>
   );
