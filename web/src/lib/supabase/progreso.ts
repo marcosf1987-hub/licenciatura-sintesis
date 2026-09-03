@@ -182,3 +182,67 @@ export async function calcularGate(moduloId: string, totalUnidades = 8): Promise
 
   return { programaPct, biblioCompleta, tieneArtefacto, puedeEvaluar };
 }
+
+// ── Sesiones / tiempo en plataforma (solo stats) ───────────────────────────
+
+export type SessionKind = "webapp" | "lectura" | "unidad";
+
+export async function startSession(input: {
+  moduloId: string;
+  unidadId?: string;
+  url?: string;
+  kind?: SessionKind;
+}): Promise<string | null> {
+  const supabase = createClient();
+  if (!supabase) return null;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return null;
+
+  const { data, error } = await supabase
+    .from("session_events")
+    .insert({
+      user_id: user.id,
+      modulo_id: input.moduloId,
+      unidad_id: input.unidadId ?? null,
+      url: input.url ?? null,
+      kind: input.kind ?? "webapp",
+      started_at: new Date().toISOString(),
+    })
+    .select("id")
+    .single();
+  if (error) {
+    console.error("startSession", error);
+    return null;
+  }
+  return data.id as string;
+}
+
+export async function endSession(sessionId: string, durationSeconds: number) {
+  const supabase = createClient();
+  if (!supabase || !sessionId) return;
+  const { error } = await supabase
+    .from("session_events")
+    .update({
+      ended_at: new Date().toISOString(),
+      duration_seconds: Math.max(0, Math.round(durationSeconds)),
+    })
+    .eq("id", sessionId);
+  if (error) console.error("endSession", error);
+}
+
+export async function getHorasPlataformaTotal(): Promise<number> {
+  const supabase = createClient();
+  if (!supabase) return 0;
+  const { data, error } = await supabase
+    .from("session_events")
+    .select("duration_seconds")
+    .not("duration_seconds", "is", null);
+  if (error) return 0;
+  const secs = (data ?? []).reduce(
+    (acc: number, row: { duration_seconds: number | null }) =>
+      acc + (row.duration_seconds ?? 0),
+    0
+  );
+  return Math.round((secs / 3600) * 10) / 10;
+}
+

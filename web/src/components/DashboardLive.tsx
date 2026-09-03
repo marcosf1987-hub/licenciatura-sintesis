@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { watchAuth } from "@/lib/supabase/client";
-import { getExpediente, type EstadoModulo } from "@/lib/supabase/progreso";
+import {
+  getExpediente,
+  getHorasPlataformaTotal,
+  type EstadoModulo,
+} from "@/lib/supabase/progreso";
 import { getEstadoModulo, plan } from "@/lib/data";
 import { ModuleCard } from "./ModuleCard";
 import { ProgressRing } from "./ProgressRing";
@@ -21,6 +25,7 @@ interface ModuloRow {
 export function DashboardLive() {
   const [user, setUser] = useState<{ email?: string } | null>(null);
   const [rows, setRows] = useState<ModuloRow[]>([]);
+  const [horas, setHoras] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,9 +33,16 @@ export function DashboardLive() {
   }, []);
 
   useEffect(() => {
-    if (!user) { setLoading(false); return; }
-    getExpediente()
-      .then(setRows)
+    if (!user) {
+      setLoading(false);
+      setHoras(0);
+      return;
+    }
+    Promise.all([getExpediente(), getHorasPlataformaTotal()])
+      .then(([expediente, h]) => {
+        setRows(expediente);
+        setHoras(h);
+      })
       .finally(() => setLoading(false));
   }, [user]);
 
@@ -76,6 +88,14 @@ export function DashboardLive() {
               {loading ? "…" : `${aprobados} / ${total}`}
             </p>
           </div>
+          {user && (
+            <div>
+              <p className="text-stone-500">Tiempo en plataforma</p>
+              <p className="font-medium tabular-nums">
+                {loading ? "…" : `${horas} h`}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

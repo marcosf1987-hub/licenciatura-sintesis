@@ -198,7 +198,12 @@ export function UnidadBody({
   return (
     <>
       <AuthBanner />
-      <MarkdownBody content={unidad.body} unidadId={unidad.id} />
+      <MarkdownBody
+        content={unidad.body}
+        unidadId={unidad.id}
+        moduloId={moduloId}
+        unidadSlug={unidad.slug}
+      />
       <CompletarUnidad moduloId={moduloId} unidad={unidad} siguiente={siguiente} />
       {!siguiente && <GatePanel />}
       <nav className="mt-6 flex justify-between text-sm text-stone-500">

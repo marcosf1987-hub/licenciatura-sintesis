@@ -271,9 +271,13 @@ function itemKeyFromText(
 export function MarkdownBody({
   content,
   unidadId,
+  moduloId,
+  unidadSlug,
 }: {
   content: string;
   unidadId?: string;
+  moduloId?: string;
+  unidadSlug?: string;
 }) {
   const { user, isChecked, toggle } = useProgreso();
   const taskIdxRef = useRef(0);
@@ -286,6 +290,27 @@ export function MarkdownBody({
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          a({ href, children, ...props }) {
+            const text = extractText(children).trim() || "Lectura";
+            if (
+              href &&
+              /^https?:\/\//i.test(href) &&
+              moduloId &&
+              unidadSlug
+            ) {
+              const readerHref = `/modulo/${moduloId.toLowerCase()}/${unidadSlug}/lectura?url=${encodeURIComponent(href)}&title=${encodeURIComponent(text)}`;
+              return (
+                <Link href={readerHref} className="font-medium underline underline-offset-2">
+                  {children}
+                </Link>
+              );
+            }
+            return (
+              <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+                {children}
+              </a>
+            );
+          },
           table({ children }) {
             return (
               <div className="-mx-4 mb-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
