@@ -21,6 +21,8 @@ Si no se indica un recorte, leé el texto entero.
 
 Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 
+- [ ] Bibliografía obligatoria leída
+
 ### Mapa SEP ↔ unidad
 
 | Unidad | Qué leer |
@@ -37,20 +39,6 @@ Priest y Ayer son opcionales: si no los conseguís, alcanza con la SEP.
 ### Recomendado (libro entero)
 
 *Introduction to Logic* (Copi / Hurley). Tiene sentido comprarlo si lo vas a leer de tapa a tapa.
-
-## Unidades
-
-Marcá cada una al terminar lecturas + práctica.
-
-- [ ] **U1** — Validez, solidez, argumento
-- [ ] **U2** — Conectivos y tablas de verdad
-- [ ] **U3** — Equivalencias, formas normales, falacias
-- [ ] **U4** — Deducción natural
-- [ ] **U5** — Predicados I
-- [ ] **U6** — Predicados II
-- [ ] **U7** — Frege
-- [ ] **U8** — Repaso y pedir evaluación
-- [ ] Bibliografía obligatoria leída
 
 ## Detalle por unidad
 

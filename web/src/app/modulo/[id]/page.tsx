@@ -1,25 +1,13 @@
-import { readFileSync, existsSync } from "fs";
-import { join } from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ModuleMarkdown } from "@/components/ModuleMarkdown";
+import { ModuloIntroBody } from "@/components/ModuloFlow";
+import { ProgresoProvider } from "@/components/progreso";
 import { StatusBadge } from "@/components/StatusBadge";
-import {
-  getModulo,
-  getTrackLabel,
-  idFromSlug,
-  plan,
-  progreso,
-} from "@/lib/data";
+import { getModulo, getTrackLabel, idFromSlug, plan, progreso } from "@/lib/data";
+import { loadModuloDoc } from "@/lib/load-modulo";
 
 export function generateStaticParams() {
   return plan.modulos.map((m) => ({ id: m.id.toLowerCase() }));
-}
-
-function loadMarkdown(moduloId: string): string | null {
-  const path = join(process.cwd(), "content", "modulos", `${moduloId}.md`);
-  if (!existsSync(path)) return null;
-  return readFileSync(path, "utf-8");
 }
 
 export default async function ModuloPage({
@@ -30,12 +18,10 @@ export default async function ModuloPage({
   const { id: slug } = await params;
   const moduloId = idFromSlug(slug);
   const modulo = getModulo(moduloId);
-
   if (!modulo) notFound();
 
   const estado = progreso.modulos[moduloId]?.estado ?? "bloqueado";
-  const horasPlataforma = progreso.modulos[moduloId]?.horas_plataforma ?? 0;
-  const markdown = loadMarkdown(moduloId);
+  const doc = loadModuloDoc(moduloId);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -60,11 +46,6 @@ export default async function ModuloPage({
         <p className="text-sm text-stone-600 dark:text-stone-400">
           {getTrackLabel(modulo.track)} · nivel {modulo.nivel.replace("-", " → ")}
         </p>
-        {horasPlataforma > 0 && (
-          <p className="mt-2 text-xs text-stone-400">
-            {horasPlataforma} h registradas en plataforma (estadística)
-          </p>
-        )}
       </header>
 
       <section className="mb-8 grid gap-4 sm:grid-cols-2">
@@ -73,9 +54,7 @@ export default async function ModuloPage({
             Prerrequisitos
           </h2>
           <p className="text-sm">
-            {modulo.prerrequisitos.length
-              ? modulo.prerrequisitos.join(", ")
-              : "Ninguno"}
+            {modulo.prerrequisitos.length ? modulo.prerrequisitos.join(", ") : "Ninguno"}
           </p>
         </div>
         <div className="rounded-xl border border-stone-200 p-4 dark:border-stone-800">
@@ -106,8 +85,14 @@ export default async function ModuloPage({
         </section>
       )}
 
-      {markdown ? (
-        <ModuleMarkdown content={markdown} moduloId={moduloId} />
+      {doc ? (
+        <ProgresoProvider moduloId={moduloId} totalUnidades={doc.unidades.length || 8}>
+          <ModuloIntroBody
+            intro={doc.intro}
+            moduloId={moduloId}
+            unidades={doc.unidades}
+          />
+        </ProgresoProvider>
       ) : (
         <div className="rounded-xl border border-dashed border-stone-300 p-8 text-center dark:border-stone-700">
           <p className="text-sm text-stone-500">
