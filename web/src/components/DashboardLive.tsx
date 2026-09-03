@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/client";
+import { watchAuth } from "@/lib/supabase/client";
 import { getExpediente, type EstadoModulo } from "@/lib/supabase/progreso";
 import { getEstadoModulo, plan } from "@/lib/data";
 import { ModuleCard } from "./ModuleCard";
@@ -24,16 +24,7 @@ export function DashboardLive() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const supabase = createClient();
-    if (!supabase) {
-      setLoading(false);
-      return;
-    }
-    supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_, session) => setUser(session?.user ?? null)
-    );
-    return () => subscription.unsubscribe();
+    return watchAuth((next) => setUser(next ? { email: next.email } : null));
   }, []);
 
   useEffect(() => {

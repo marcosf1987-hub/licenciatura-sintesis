@@ -11,7 +11,7 @@ import {
   type GateStatus,
   type ModuloEstado,
 } from "@/lib/supabase/progreso";
-import { createClient } from "@/lib/supabase/client";
+import { watchAuth } from "@/lib/supabase/client";
 
 export function useChecklist(moduloId: string, totalUnidades = 8) {
   const [user, setUser] = useState<{ id: string } | null>(null);
@@ -27,12 +27,7 @@ export function useChecklist(moduloId: string, totalUnidades = 8) {
 
   // Verificar sesión
   useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => setUser(data.user));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_, session) => setUser(session?.user ?? null)
-    );
-    return () => subscription.unsubscribe();
+    return watchAuth((next) => setUser(next ? { id: next.id } : null));
   }, []);
 
   // Cargar datos

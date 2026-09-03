@@ -12,7 +12,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/client";
+import { watchAuth } from "@/lib/supabase/client";
 import {
   calcularGate,
   getChecklist,
@@ -59,16 +59,7 @@ function ProgresoProvider({ children, moduloId, totalUnidades = 8 }: {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const supabase = createClient();
-    if (!supabase) {
-      setLoading(false);
-      return;
-    }
-    supabase.auth.getUser().then(({ data }) => setUser(data.user ? { id: data.user.id } : null));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_, session) => setUser(session?.user ? { id: session.user.id } : null)
-    );
-    return () => subscription.unsubscribe();
+    return watchAuth((next) => setUser(next ? { id: next.id } : null));
   }, []);
 
   const reload = useCallback(async () => {

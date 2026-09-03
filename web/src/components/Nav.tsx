@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, watchAuth } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
 const links = [
@@ -13,15 +13,7 @@ const links = [
 export function Nav() {
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    const supabase = createClient();
-    if (!supabase) return;
-    supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_, session) => setUser(session?.user ?? null)
-    );
-    return () => subscription.unsubscribe();
-  }, []);
+  useEffect(() => watchAuth(setUser), []);
 
   async function handleLogout() {
     const supabase = createClient();
