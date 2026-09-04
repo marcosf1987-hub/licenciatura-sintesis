@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { UnidadDoc } from "@/lib/parse-modulo";
 import { AuthBanner, GatePanel, MarkdownBody, useProgreso } from "./progreso";
+import { ArtefactosPanel } from "./ArtefactosPanel";
 
 export function UnidadIndex({
   moduloId,
@@ -156,6 +157,7 @@ export function ModuloIntroBody({
       {unidades.length > 0 ? (
         <UnidadIndex moduloId={moduloId} unidades={unidades} />
       ) : null}
+      <ArtefactosPanel moduloId={moduloId} />
     </>
   );
 }
@@ -205,7 +207,12 @@ export function UnidadBody({
         unidadSlug={unidad.slug}
       />
       <CompletarUnidad moduloId={moduloId} unidad={unidad} siguiente={siguiente} />
-      {!siguiente && <GatePanel />}
+      {!siguiente && (
+        <>
+          <ArtefactosPanel moduloId={moduloId} />
+          <GatePanel />
+        </>
+      )}
       <nav className="mt-6 flex justify-between text-sm text-stone-500">
         {anterior ? (
           <Link href={`/modulo/${slug}/${anterior.slug}`} className="hover:text-stone-800 dark:hover:text-stone-200">

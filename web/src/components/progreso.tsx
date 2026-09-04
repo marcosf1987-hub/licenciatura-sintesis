@@ -38,6 +38,7 @@ interface ProgresoCtx {
   ) => Promise<void>;
   mark: (key: string, type: ChecklistItem["item_type"]) => Promise<void>;
   solicitarEvaluacion: () => void;
+  reload: () => Promise<void>;
 }
 
 const Ctx = createContext<ProgresoCtx | null>(null);
@@ -74,10 +75,17 @@ export function ProgresoProvider({
 
   const reload = useCallback(async () => {
     if (!user) {
+      setItems([]);
+      setGate({
+        programaPct: 0,
+        biblioCompleta: false,
+        tieneArtefacto: false,
+        puedeEvaluar: false,
+      });
+      setEstadoModulo(null);
       setLoading(false);
       return;
     }
-    setLoading(true);
     const [lista, g, est] = await Promise.all([
       getChecklist(moduloId),
       calcularGate(moduloId, totalUnidades),
@@ -161,6 +169,7 @@ export function ProgresoProvider({
         toggle,
         mark,
         solicitarEvaluacion,
+        reload,
       }}
     >
       {children}

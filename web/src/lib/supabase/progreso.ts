@@ -109,32 +109,58 @@ export async function setChecklistItem(
   if (error) throw error;
 }
 
-export async function getArtefactos(moduloId: string) {
+export type ArtefactoTipo = "nota" | "mapa" | "ejercicios" | "ensayo" | "otro";
+
+export interface Artefacto {
+  id: string;
+  nombre: string;
+  tipo: ArtefactoTipo;
+  contenido: string | null;
+  created_at: string;
+}
+
+export async function getArtefactos(moduloId: string): Promise<Artefacto[]> {
   const supabase = createClient();
   if (!supabase) return [];
   const { data, error } = await supabase
     .from("artefactos")
     .select("id, nombre, tipo, contenido, created_at")
     .eq("modulo_id", moduloId)
-    .order("created_at");
+    .order("created_at", { ascending: false });
   if (error) throw error;
-  return data ?? [];
+  return (data ?? []) as Artefacto[];
 }
 
 export async function addArtefacto(
   moduloId: string,
   nombre: string,
-  tipo: string,
+  tipo: ArtefactoTipo,
   contenido: string
-) {
+): Promise<Artefacto> {
   const supabase = createClient();
   if (!supabase) throw new Error("Supabase no disponible");
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("No autenticado");
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("artefactos")
-    .insert({ user_id: user.id, modulo_id: moduloId, nombre, tipo, contenido });
+    .insert({
+      user_id: user.id,
+      modulo_id: moduloId,
+      nombre: nombre.trim(),
+      tipo,
+      contenido: contenido.trim() || null,
+    })
+    .select("id, nombre, tipo, contenido, created_at")
+    .single();
+  if (error) throw error;
+  return data as Artefacto;
+}
+
+export async function deleteArtefacto(id: string) {
+  const supabase = createClient();
+  if (!supabase) throw new Error("Supabase no disponible");
+  const { error } = await supabase.from("artefactos").delete().eq("id", id);
   if (error) throw error;
 }
 
