@@ -63,7 +63,7 @@
 2. Clasificar cada uno: ¿deductivo o no? ¿válido o inválido? ¿sólido o no sólido? Justificar en 1–2 líneas.
 3. Simbolizar **5 oraciones** simples con letras (P, Q, R…) y escribir 2 argumentos simbólicos de 2–3 premisas.
 
-**Artefacto sugerido:** ficha `artefactos/u1-argumentos.md` con los 8 casos analizados.
+**Trabajo sugerido:** guardá en **Trabajos del módulo** (abajo en la intro, o en U8) una ficha titulada p. ej. `U1 — 8 argumentos`, con los 8 casos analizados.
 
 **Autocontrol**
 
@@ -95,7 +95,7 @@
 2. **12 ejercicios** de valor de verdad: dada una fila de la tabla, completar el resto o decidir si la fórmula es tautología/contradicción/contingente.
 3. Traducir **10 oraciones** al lenguaje proposicional (incluir al menos 3 condicionales y 2 bicondicionales).
 
-**Artefacto sugerido:** `artefactos/u2-tablas-verdad.pdf` o `.md` con 6 tablas bien hechas.
+**Trabajo sugerido:** en **Trabajos del módulo**, tipo *Ejercicios*, título p. ej. `U2 — tablas de verdad`, con 6 tablas bien hechas.
 
 **Autocontrol**
 
@@ -127,7 +127,7 @@
 2. Convertir **4 fórmulas** a CNF y **2** a DNF.
 3. Identificar la falacia en **6 argumentos** inválidos clásicos (esquema + contraejemplo en tabla o fila).
 
-**Artefacto sugerido:** mapa conceptual `artefactos/u3-equivalencias.md` (De Morgan, contraposición, falacias).
+**Trabajo sugerido:** en **Trabajos del módulo**, tipo *Mapa*, título p. ej. `U3 — equivalencias` (De Morgan, contraposición, falacias).
 
 **Autocontrol**
 
@@ -158,7 +158,7 @@
 2. **5 derivaciones** sin guía, incluyendo al menos 1 con suposición condicional.
 3. Para 2 pruebas, verificar validez con tabla de verdad y comparar con la derivación.
 
-**Artefacto sugerido:** `artefactos/u4-derivaciones.md` con 5 pruebas completas comentadas.
+**Trabajo sugerido:** en **Trabajos del módulo**, tipo *Ejercicios*, título p. ej. `U4 — derivaciones`, con 5 pruebas completas comentadas.
 
 **Autocontrol**
 
@@ -189,7 +189,7 @@
 2. Dado un dominio de 3 elementos, evaluar **4 fórmulas** ∀/∃ a mano (enumeración).
 3. Distinguir alcance en **5 fórmulas** ambiguas mal parentizadas vs bien parentizadas.
 
-**Artefacto sugerido:** `artefactos/u5-traducciones-fol.md` con las 15 traducciones y glosario de predicados.
+**Trabajo sugerido:** en **Trabajos del módulo**, tipo *Ejercicios*, título p. ej. `U5 — traducciones FOL`, con las 15 traducciones y glosario de predicados.
 
 **Autocontrol**
 
@@ -221,7 +221,7 @@
 2. **6 argumentos** en FOL; indicar si son válidos (intuición + contraejemplo en mini-dominio).
 3. **4 pares** de fórmulas: ¿equivalentes? (∀∃ vs ∃∀ — mostrar contraejemplo cuando no).
 
-**Artefacto sugerido:** `artefactos/u6-fol-integrador.md` (mini-problema: “todos los filósofos leen algún libro que ningún crítico lee” — formalizar y discutir).
+**Trabajo sugerido:** en **Trabajos del módulo**, tipo *Nota*, título p. ej. `U6 — FOL integrador` (mini-problema: “todos los filósofos leen algún libro que ningún crítico lee” — formalizar y discutir).
 
 **Autocontrol**
 
@@ -253,7 +253,7 @@
 2. **3 preguntas** de aplicación: sustitutividad salva veritate, oraciones indirectas, referencia de oraciones (verdadero/falso).
 3. Bosquejo del ensayo: 5 bullets “¿Por qué Frege necesitaba lógica formal?”
 
-**Artefacto sugerido:** `artefactos/u7-frege-resumen.md` (base del ensayo final).
+**Trabajo sugerido:** en **Trabajos del módulo**, tipo *Ensayo* o *Nota*, título p. ej. `U7 — Frege resumen` (base del ensayo final).
 
 **Autocontrol**
 
