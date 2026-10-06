@@ -5,7 +5,10 @@ import Link from "next/link";
 import { watchAuth } from "@/lib/supabase/client";
 import {
   getExpediente,
-  getHorasPlataformaTotal,
+  getSegundosPlataformaTotal,
+  getMinutosEstudioTotal,
+  formatTiempoPlataforma,
+  formatMinutosEstudio,
   type EstadoModulo,
 } from "@/lib/supabase/progreso";
 import { getEstadoModulo, plan } from "@/lib/data";
@@ -25,7 +28,8 @@ interface ModuloRow {
 export function DashboardLive() {
   const [user, setUser] = useState<{ email?: string } | null>(null);
   const [rows, setRows] = useState<ModuloRow[]>([]);
-  const [horas, setHoras] = useState(0);
+  const [minutosEstudio, setMinutosEstudio] = useState(0);
+  const [segundosPantalla, setSegundosPantalla] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,13 +39,19 @@ export function DashboardLive() {
   useEffect(() => {
     if (!user) {
       setLoading(false);
-      setHoras(0);
+      setMinutosEstudio(0);
+      setSegundosPantalla(0);
       return;
     }
-    Promise.all([getExpediente(), getHorasPlataformaTotal()])
-      .then(([expediente, h]) => {
+    Promise.all([
+      getExpediente(),
+      getMinutosEstudioTotal(),
+      getSegundosPlataformaTotal(),
+    ])
+      .then(([expediente, estudio, pantalla]) => {
         setRows(expediente);
-        setHoras(h);
+        setMinutosEstudio(estudio);
+        setSegundosPantalla(pantalla);
       })
       .finally(() => setLoading(false));
   }, [user]);
@@ -89,12 +99,20 @@ export function DashboardLive() {
             </p>
           </div>
           {user && (
-            <div>
-              <p className="text-stone-500">Tiempo en plataforma</p>
-              <p className="font-medium tabular-nums">
-                {loading ? "…" : `${horas} h`}
-              </p>
-            </div>
+            <>
+              <div>
+                <p className="text-stone-500">Tiempo de estudio</p>
+                <p className="font-medium tabular-nums">
+                  {loading ? "…" : formatMinutosEstudio(minutosEstudio)}
+                </p>
+              </div>
+              <div>
+                <p className="text-stone-500">En pantalla</p>
+                <p className="font-medium tabular-nums text-stone-600 dark:text-stone-400">
+                  {loading ? "…" : formatTiempoPlataforma(segundosPantalla)}
+                </p>
+              </div>
+            </>
           )}
         </div>
       </section>

@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { UnidadDoc } from "@/lib/parse-modulo";
+import {
+  formatMinutosEstudio,
+  getEstudioUnidad,
+  upsertEstudioUnidad,
+} from "@/lib/supabase/progreso";
 import { AuthBanner, GatePanel, MarkdownBody, useProgreso } from "./progreso";
 import { ArtefactosPanel } from "./ArtefactosPanel";
+import { TiempoEstudioModal } from "./TiempoEstudioModal";
 
 export function UnidadIndex({
   moduloId,
@@ -95,48 +101,107 @@ export function CompletarUnidad({
   const router = useRouter();
   const { user, isChecked, mark } = useProgreso();
   const [busy, setBusy] = useState(false);
+  const [askTime, setAskTime] = useState(false);
+  const [minutosGuardados, setMinutosGuardados] = useState<number | null>(null);
   const done = isChecked(unidad.id);
   const slug = moduloId.toLowerCase();
 
-  async function handleComplete() {
+  useEffect(() => {
+    if (!user) {
+      setMinutosGuardados(null);
+      return;
+    }
+    void getEstudioUnidad(moduloId, unidad.id).then(setMinutosGuardados);
+  }, [user, moduloId, unidad.id]);
+
+  async function persistAndComplete(minutos: number) {
+    setBusy(true);
+    try {
+      await upsertEstudioUnidad(moduloId, unidad.id, minutos);
+      setMinutosGuardados(minutos);
+      await mark(`${unidad.id}_BIBLIO`, "biblio");
+      await mark(unidad.id, "programa");
+      setAskTime(false);
+      if (!done) {
+        if (siguiente) {
+          router.push(`/modulo/${slug}/${siguiente.slug}`);
+        } else {
+          router.push(`/modulo/${slug}/${unidad.slug}`);
+        }
+      }
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function handleCompleteClick() {
     if (!user) {
       router.push("/login");
       return;
     }
-    setBusy(true);
-    await mark(`${unidad.id}_BIBLIO`, "biblio");
-    await mark(unidad.id, "programa");
-    setBusy(false);
-    if (siguiente) {
-      router.push(`/modulo/${slug}/${siguiente.slug}`);
-    } else {
-      router.push(`/modulo/${slug}/${unidad.slug}`);
-    }
+    setAskTime(true);
   }
 
   return (
     <div className="mt-10 rounded-xl border border-stone-200 p-5 dark:border-stone-800">
       {done ? (
-        <p className="mb-3 text-sm text-emerald-700 dark:text-emerald-400">
-          {unidad.id} está marcada como hecha.
-        </p>
+        <div className="mb-3 space-y-1">
+          <p className="text-sm text-emerald-700 dark:text-emerald-400">
+            {unidad.id} está marcada como hecha.
+          </p>
+          {minutosGuardados != null && minutosGuardados > 0 ? (
+            <p className="text-xs text-stone-500">
+              Estudio declarado:{" "}
+              <span className="font-medium tabular-nums text-stone-700 dark:text-stone-300">
+                {formatMinutosEstudio(minutosGuardados)}
+              </span>
+              {" · "}
+              <button
+                type="button"
+                onClick={() => setAskTime(true)}
+                className="underline underline-offset-2 hover:text-stone-800 dark:hover:text-stone-200"
+              >
+                Editar
+              </button>
+            </p>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setAskTime(true)}
+              className="text-xs text-stone-600 underline underline-offset-2 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-200"
+            >
+              Registrar tiempo de estudio
+            </button>
+          )}
+        </div>
       ) : (
         <p className="mb-3 text-sm text-stone-600 dark:text-stone-400">
           Cuando termines lecturas y práctica de esta unidad:
         </p>
       )}
-      <button
-        type="button"
-        onClick={handleComplete}
-        disabled={busy}
-        className="w-full rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700 disabled:opacity-50 dark:bg-stone-100 dark:text-stone-900"
-      >
-        {busy
-          ? "Guardando…"
-          : siguiente
+      {!done && (
+        <button
+          type="button"
+          onClick={handleCompleteClick}
+          disabled={busy}
+          className="w-full rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700 disabled:opacity-50 dark:bg-stone-100 dark:text-stone-900"
+        >
+          {siguiente
             ? `Completar ${unidad.id} y pasar a ${siguiente.id}`
-            : `Completar ${unidad.id} y volver al módulo`}
-      </button>
+            : `Completar ${unidad.id}`}
+        </button>
+      )}
+
+      <TiempoEstudioModal
+        open={askTime}
+        unidadLabel={unidad.id}
+        initialMinutes={minutosGuardados}
+        busy={busy}
+        onCancel={() => {
+          if (!busy) setAskTime(false);
+        }}
+        onConfirm={(minutos) => void persistAndComplete(minutos)}
+      />
     </div>
   );
 }

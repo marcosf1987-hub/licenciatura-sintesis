@@ -256,7 +256,8 @@ export async function endSession(sessionId: string, durationSeconds: number) {
   if (error) console.error("endSession", error);
 }
 
-export async function getHorasPlataformaTotal(): Promise<number> {
+/** Segundos totales acumulados en session_events (solo stats). */
+export async function getSegundosPlataformaTotal(): Promise<number> {
   const supabase = createClient();
   if (!supabase) return 0;
   const { data, error } = await supabase
@@ -264,11 +265,106 @@ export async function getHorasPlataformaTotal(): Promise<number> {
     .select("duration_seconds")
     .not("duration_seconds", "is", null);
   if (error) return 0;
-  const secs = (data ?? []).reduce(
+  return (data ?? []).reduce(
     (acc: number, row: { duration_seconds: number | null }) =>
       acc + (row.duration_seconds ?? 0),
     0
   );
+}
+
+/** @deprecated preferí getSegundosPlataformaTotal + formatTiempoPlataforma */
+export async function getHorasPlataformaTotal(): Promise<number> {
+  const secs = await getSegundosPlataformaTotal();
   return Math.round((secs / 3600) * 10) / 10;
+}
+
+export function formatTiempoPlataforma(totalSeconds: number): string {
+  return formatMinutosEstudio(Math.floor(totalSeconds / 60));
+}
+
+/** Formatea minutos totales de estudio (métrica principal). */
+export function formatMinutosEstudio(totalMinutes: number): string {
+  const m = Math.max(0, Math.floor(totalMinutes));
+  if (m < 60) return `${m} min`;
+  const h = Math.floor(m / 60);
+  const r = m % 60;
+  if (r === 0) return `${h} h`;
+  return `${h} h ${r} min`;
+}
+
+// ── Estudio declarado por unidad (métrica principal) ───────────────────────
+
+export interface EstudioUnidad {
+  modulo_id: string;
+  unidad_id: string;
+  minutos: number;
+  updated_at: string;
+}
+
+export async function upsertEstudioUnidad(
+  moduloId: string,
+  unidadId: string,
+  minutos: number
+): Promise<void> {
+  const supabase = createClient();
+  if (!supabase) throw new Error("Supabase no disponible");
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error("No autenticado");
+
+  const mins = Math.max(0, Math.min(10080, Math.round(minutos)));
+  const { error } = await supabase.from("estudio_unidad").upsert(
+    {
+      user_id: user.id,
+      modulo_id: moduloId,
+      unidad_id: unidadId,
+      minutos: mins,
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: "user_id,modulo_id,unidad_id" }
+  );
+  if (error) throw error;
+}
+
+export async function getEstudioUnidad(
+  moduloId: string,
+  unidadId: string
+): Promise<number | null> {
+  const supabase = createClient();
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from("estudio_unidad")
+    .select("minutos")
+    .eq("modulo_id", moduloId)
+    .eq("unidad_id", unidadId)
+    .maybeSingle();
+  if (error || !data) return null;
+  return data.minutos as number;
+}
+
+export async function getMinutosEstudioTotal(): Promise<number> {
+  const supabase = createClient();
+  if (!supabase) return 0;
+  const { data, error } = await supabase
+    .from("estudio_unidad")
+    .select("minutos");
+  if (error) return 0;
+  return (data ?? []).reduce(
+    (acc: number, row: { minutos: number | null }) => acc + (row.minutos ?? 0),
+    0
+  );
+}
+
+export async function getMinutosEstudioModulo(moduloId: string): Promise<number> {
+  const supabase = createClient();
+  if (!supabase) return 0;
+  const { data, error } = await supabase
+    .from("estudio_unidad")
+    .select("minutos")
+    .eq("modulo_id", moduloId);
+  if (error) return 0;
+  return (data ?? []).reduce(
+    (acc: number, row: { minutos: number | null }) => acc + (row.minutos ?? 0),
+    0
+  );
 }
 
